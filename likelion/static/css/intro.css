@@ -1,3 +1,19 @@
-body{
-    color: aqua;
+.container{
+    background-color: darkgray;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.supply-inform{
+    display: flex;
+    width: 283px;
+    height: 108px;
+    margin: 0px auto;
+    background: rgba(0, 0, 0, 0.42);
+    border-radius: 8px;
+}
+.col{
+    flex: 1;
 }
