@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
-
 {% load static %}
 
 
-{% block title %}
-            
+
+{% block title %} 
 {% endblock title %}
 
+
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+{% endblock link %}
+
+
+
 {% block content %}
-<p>안녕</p>
+    <p>안녕</p>
 {% endblock content %}
