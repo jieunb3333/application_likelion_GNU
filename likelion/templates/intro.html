@@ -18,19 +18,34 @@
 {% block content %}
     <div class="container">
         <div class="row" >
-            <img src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
+            <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
         </div>
-        <div class="row">경상대 멋쟁이사자처럼 9기</div>
-        <div class="row">웹프로그래밍, 웹서비스 구현 및 창업 아이디어를 내 손으로 실현한다</div>
+        <div class="row title">경상대 멋쟁이사자처럼 9기</div><hr>
+        <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
         <div class="row">
-            <button type="button" class="btn btn-warning">지원하기/지원확인</button>
+            <button type="button" class="btn btn-warning" >지원하기/지원확인</button>
         </div>
-        <div class="row">
+        <div class="row inform-box">
             <div class="supply-inform">
-                <div class="col">ss</div>
-                <div class="col">dd</div>
+                <div class="col col-left">
+                    지원 날짜<br>
+                    서류 결과 확인<br>
+                    최종확인
+                </div>
+                <div class="col col-middle">
+                    :<br>:<br>:
+                </div>
+                <div class="col col-right">
+                     3월 2일~13일<br>3월 14일~<br>개별 통보
+                </div>
             </div>
         </div>
-        <div class="row">contact</div>
+        <div class="row contact">
+            <div class="row" style="color: white;">CONTACT</div>
+            <div class="row sns-logo">
+                <img class="insta"  src="{% static 'intro_image/insta.png' %}" alt="" width="52px">
+                <img class="facebook"  src="{% static 'intro_image/facebook.png' %}" alt="" width="52px">
+            </div>
+        </div>
     </div>
 {% endblock content %}

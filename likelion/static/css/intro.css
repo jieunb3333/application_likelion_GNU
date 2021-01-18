@@ -1,10 +1,53 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    background-image: url('intro_background.png');
+    background-size: 100%;
+}
 .container{
-    background-color: darkgray;
+    color: white;
+    font-family: 'S-CoreDream-3Light';
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+.likelion-logo{
+    margin-top: 90px;
+    width: 290px;
+    height: 35px;
+
+}
+.title{
+    margin-top: 130px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 72px;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+}
+hr{
+    width: 750px;
+    margin-top: 5px;
+}
+.sub{
+    margin-top: 87px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 35px;
+}
+.btn{
+    margin-top: 95px;
+}
+.inform-box{
+    margin-top: 30px;
 }
 .supply-inform{
     display: flex;
@@ -15,5 +58,33 @@
     border-radius: 8px;
 }
 .col{
+    margin:auto;
+    font-size: small;
+    line-height: 25px;
+}
+.col-left{
+    padding-left: 5%;
+    text-align: left;
+    flex: 3;
+}
+.col-middle{
+    padding: 0px;
     flex: 1;
+}
+.col-right{
+    flex: 3;
+    padding-right: 5%;
+}
+.contact{
+    margin-top: 54px;
+}
+.sns-logo{
+    margin-top: 10px;
+    margin-bottom: 87px;
+}
+.insta{
+    margin-right: 13px;
+}
+.facebook{
+    margin-left: 13px;
 }
