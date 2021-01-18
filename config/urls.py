@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from likelion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.intro ,name='intro'),
+    path('register/', views.register, name='register'),
+    path('view/', views.view, name='view'),
+    path('check/', views.check, name='check'),
+
+
 ]
