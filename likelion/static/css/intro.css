@@ -13,6 +13,7 @@ body {
   background-size: cover;
   background: url("../intro_image/intro_background.png") no-repeat center/cover
     fixed;
+    
 }
 .container {
   color: white;
@@ -37,16 +38,26 @@ body {
   /* identical to box height */
   letter-spacing: 0.05em;
 }
+.title2{
+    display:none
+}
 hr {
   width: 750px;
   margin-top: 5px;
 }
 .sub {
   margin-top: 87px;
+  margin-bottom: 90px;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 35px;
+}
+.orange{
+    width: 230px; 
+    height: 60px; 
+    background-color: #FF921B; 
+    font-size: 20px;
 }
 .inform-box {
   margin-top: 30px;
@@ -91,9 +102,58 @@ hr {
   margin-left: 13px;
 }
 
-/* @media screen and (max-width: 1600px) {
-  body {
-    background-size: 1600px;
-    min-width: 800px;
+@media screen and (max-width: 850px) {
+    body{
+        max-height: 640px;
+    }
+  .title{
+      display: none;
   }
-} */
+  .title2{
+        display: block;
+        font-family: "S-CoreDream-3Light";
+        margin-top: 10vh;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 7vh;
+        line-height: 72px;
+        /* identical to box height */
+        letter-spacing: 0.05em;
+  }
+  hr {
+    width: 85vw;
+    margin-top: 1vh;
+  }
+  .likelion-logo {
+    margin-top: 2vh;
+    width: 60vw;
+    height: 4vh;
+  }
+  .sub {
+    margin-top: 5vh;
+    margin-bottom: 6vh;
+    font-size: 3vh;
+    line-height: 35px;
+  }
+  .orange{
+    width: 55vw; 
+    height: 10vh; 
+    background-color: #FF921B; 
+    font-size: 3vh;
+}
+  .contact {
+    margin-top: 3vh;
+  }
+  .sns-logo {
+    margin-top: 1vh;
+    margin-bottom: 0vh;
+  }
+  .insta {
+    margin-right: 2vw;
+    width: 10vw;
+  }
+  .facebook {
+    margin-left: 2vw;
+    width: 10vw;
+  }
+}
