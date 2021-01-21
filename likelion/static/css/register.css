@@ -1,0 +1,14 @@
+.contain{
+    background-color: gray;
+}
+.second {
+    height: 3000px;
+    
+}
+
+.bottom {
+    background-image:url("../register_img/memo2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+    
