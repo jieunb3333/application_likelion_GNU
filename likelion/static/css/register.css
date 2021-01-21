@@ -1,18 +1,24 @@
-<<<<<<< HEAD
+.container {
+    position: relative;
+    
+}
+
 div.first{
-    margin-left: 20%; margin-right: 20%;
+    width: 3000px;
     height: 1000px;
+    position: absolute;
+    
 
 }
 
 
 div.top{
-    background-image: url("../register_img/메모_상.png");
+    background-image: url("../register_img/memo1.png");
     width: 100%; height: 100%;
-}
-=======
-.contain{
-    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+   
+    
 }
 .second {
     height: 3000px;
@@ -25,4 +31,3 @@ div.top{
     background-repeat: no-repeat;
 }
     
->>>>>>> 233ff8eeff88f372a84f4824d922dd8df47aff8c
