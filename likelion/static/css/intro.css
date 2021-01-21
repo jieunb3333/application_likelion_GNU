@@ -1,88 +1,99 @@
 @font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-body{
-    background-image: url('../intro_image/intro_background.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
+body {
+  height: 100vh;
+  background-image: url("../intro_image/intro_background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background: url("../intro_image/intro_background.png") no-repeat center/cover
+    fixed;
 }
-.container{
-    color: white;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.container {
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-.likelion-logo{
-    margin-top: 90px;
-    width: 290px;
-    height: 35px;
+.likelion-logo {
+  margin-top: 90px;
+  width: 290px;
+  height: 35px;
+}
+.title {
+  font-family: "S-CoreDream-3Light";
+  margin-top: 130px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 72px;
+  /* identical to box height */
+  letter-spacing: 0.05em;
+}
+hr {
+  width: 750px;
+  margin-top: 5px;
+}
+.sub {
+  margin-top: 87px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 35px;
+}
+.inform-box {
+  margin-top: 30px;
+}
+.supply-inform {
+  display: flex;
+  width: 283px;
+  height: 108px;
+  margin: 0px auto;
+  background: rgba(0, 0, 0, 0.42);
+  border-radius: 8px;
+}
+.col {
+  margin: auto;
+  font-size: small;
+  line-height: 25px;
+}
+.col-left {
+  text-align: left;
+  flex: 3;
+  padding-left: 7%;
+}
+.col-middle {
+  padding: 0px;
+  flex: 1;
+}
+.col-right {
+  flex: 4;
+  padding-right: 5%;
+}
+.contact {
+  margin-top: 54px;
+}
+.sns-logo {
+  margin-top: 10px;
+  margin-bottom: 87px;
+}
+.insta {
+  margin-right: 13px;
+}
+.facebook {
+  margin-left: 13px;
+}
 
-}
-.title{
-    font-family: 'S-CoreDream-3Light';
-    margin-top: 130px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
-    line-height: 72px;
-    /* identical to box height */
-    letter-spacing: 0.05em;
-}
-hr{
-    width: 750px;
-    margin-top: 5px;
-}
-.sub{
-    margin-top: 87px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 35px;
-}
-.inform-box{
-    margin-top: 30px;
-}
-.supply-inform{
-    display: flex;
-    width: 283px;
-    height: 108px;
-    margin: 0px auto;
-    background: rgba(0, 0, 0, 0.42);
-    border-radius: 8px;
-}
-.col{
-    margin:auto;
-    font-size: small;
-    line-height: 25px;
-}
-.col-left{
-    text-align: left;
-    flex: 3;
-    padding-left: 7%;
-}
-.col-middle{
-    padding: 0px;
-    flex: 1;
-}
-.col-right{
-    flex: 4;
-    padding-right: 5%;
-}
-.contact{
-    margin-top: 54px;
-}
-.sns-logo{
-    margin-top: 10px;
-    margin-bottom: 87px;
-}
-.insta{
-    margin-right: 13px;
-}
-.facebook{
-    margin-left: 13px;
-}
+/* @media screen and (max-width: 1600px) {
+  body {
+    background-size: 1600px;
+    min-width: 800px;
+  }
+} */
