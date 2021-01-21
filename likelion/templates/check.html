@@ -17,10 +17,13 @@
 
 
 {% block content %}
+<div>
     <img class="logo" src="{% static 'check_img\logo.png' %}" alt="My image">        
-    <div>
+    
         <p>님,</p>
-        <h4>서류가 통과되었습니다!</h4>
+        <br>
+        <p class="pass">서류가 통과되었습니다!</p>
+        <br>
         <p>면접 날짜는<br>
         <br><br>
             5분 미리 입장해주세요.
@@ -29,6 +32,7 @@
         <p>
             줌링크 : <a href="https://likelion.net/">"https://likelion.net/"</a>
         </p>
+        <br><br>
     </div>
     
 {% endblock content %}
