@@ -4,7 +4,8 @@
 
 
 
-{% block title %} 
+{% block title %}
+    서류 지원 확인
 {% endblock title %}
 
 
@@ -16,5 +17,24 @@
 
 
 {% block content %}
-    <p>안녕</p>
+<div class="container-fluid">
+    <img class="logo" src="{% static 'check_img\logo.png' %}" alt="My image">        
+    
+    <p>님,</p>
+    <br>
+    <p class="pass">서류가 통과되었습니다!</p>
+    <br>
+    <p>면접 날짜는<br>
+    <br><br>
+        5분 미리 입장해주세요.
+    </p>
+    <br><br>
+    <p>
+        줌링크 : <a href="https://likelion.net/">"https://likelion.net/"</a>
+    </p>
+    <br><br>
+
+</div>
+
+    
 {% endblock content %}
