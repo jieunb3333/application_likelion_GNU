@@ -7,6 +7,56 @@
 body{
     background-color: #2F2F2F;
 }
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .in{
+        width: 80%;
+        height: 80%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+        padding-right: 10%;
+        padding-left: 10%;
+        font-family: 'InfinitySans-RegularA1';
+        font-size: 1vh;
+    
+    }
+    label{
+
+    }
+    .cutelion{
+        width: 10%;
+    }
+    .cuteline{
+        border: 2px solid #FF9E1B;
+        width: 10%;
+    } 
+    div.first{
+        width: 90vh;
+        height: 600px;
+        margin: 0 auto;
+        
+    }
+}
+
+@media (max-width: 767.98px) { 
+    
+    .cutelion{
+        width: 10%;
+    }
+    .cuteline{
+        border: 2px solid #FF9E1B;
+        width: 10%;
+    }
+}
+
+
+.cutelion{
+    width: 100%;
+}
+.cuteline{
+    border: 2px solid #FF9E1B;
+    width: 100%;
+}
+
 .logo{
 
 }
@@ -20,7 +70,7 @@ body{
 }
 
 div.first{
-    width: 70%;
+    width: 90%;
     height: 600px;
     margin: 0 auto;
     
@@ -35,6 +85,8 @@ div.first{
 
 }
 .in{
+    width: 80%;
+    height: 80%;
     padding-top: 10%;
     padding-bottom: 10%;
     padding-right: 10%;
@@ -43,7 +95,7 @@ div.first{
 
 }
 .second {
-    width: 70%;
+    width: 90%;
     height: 1400px;
     margin: 0 auto;
     font-family: 'InfinitySans-RegularA1';

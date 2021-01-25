@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'likelion.apps.LikelionConfig'
+    'likelion.apps.LikelionConfig',
+    'django.contrib.sites',
+    'allauth', 
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
 ]
 
 MIDDLEWARE = [
@@ -121,3 +127,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+# settings.py 
+AUTHENTICATION_BACKENDS = ( 
+    # Needed to login by username in Django admin, regardless of 'allauth' 
+    'django.contrib.auth.backends.ModelBackend', 
+    # 'allauth' specific authentication methods, such as login by email 
+    'allauth.account.auth_backends.AuthenticationBackend', ) 
+SITE_ID = 1 
+LOGIN_REDIRECT_URL = '/' ### 오류가 나면 홈으로 돌아와라
+
