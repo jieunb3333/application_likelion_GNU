@@ -16,5 +16,41 @@
 
 
 {% block content %}
-    <p>안녕</p>
+    <div class="container">
+        <div class="row" >
+            <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
+        </div>
+        <div class="row title">경상대 멋쟁이사자처럼 9기</div>
+        <div class="row title2"><strong>경상대 멋사 9기</strong></div><hr>
+        <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
+        <div class="row">
+            <button type="button" class="orange" ><strong>지원하기/지원확인</strong></button>
+        </div>
+        <div class="row inform-box">
+            <div class="supply-inform">
+                <div class="col col-left">
+                    지원 날짜<br>
+                    서류 결과 확인<br>
+                    최종확인
+                </div>
+                <div class="col col-middle">
+                    :<br>:<br>:
+                </div>
+                <div class="col col-right">
+                     3월 2일~13일<br>3월 14일~<br>개별 통보
+                </div>
+            </div>
+        </div>
+        <div class="row contact">
+            <div class="row" style="color: white;">CONTACT</div>
+            <div class="row sns-logo">
+                <a href="https://www.instagram.com/likelion_gnu/">
+                    <img class="insta"  src="{% static 'intro_image/insta.png' %}" alt="" width="52px">
+                </a>
+                <a href="https://ko-kr.facebook.com/likeliongnu/">
+                    <img class="facebook"  src="{% static 'intro_image/facebook.png' %}" alt="" width="52px">
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

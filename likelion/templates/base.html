@@ -8,6 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
     <title>
         {% block title %}
 
@@ -24,12 +26,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
+
+    <style>
+        body{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>    
+
     {% block link %}
 
     {% endblock link %}
+    
 </head>
-<header>안뇽</header>
+<header></header>
 <body>
     {% block content %}
 
