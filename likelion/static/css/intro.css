@@ -58,6 +58,7 @@ hr {
     height: 60px; 
     background-color: #FF921B; 
     font-size: 20px;
+    border: none;
 }
 .inform-box {
   margin-top: 30px;

@@ -1,9 +1,16 @@
+@font-face {
+    font-family: 'InfinitySans-RegularA1';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
     background-color: #2F2F2F;
 }
 .logo{
-    
+
 }
+
 .container {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -16,7 +23,9 @@ div.first{
     width: 70%;
     height: 600px;
     margin: 0 auto;
+    
 }
+
  div.top{ /*배경이미지 */
     background-image: url("../register_img/memo1.png");
     width: 100%; height: 100%;
@@ -30,13 +39,14 @@ div.first{
     padding-bottom: 10%;
     padding-right: 10%;
     padding-left: 10%;
+    font-family: 'InfinitySans-RegularA1';
 
 }
 .second {
     width: 70%;
-    height: 1200px;
+    height: 1400px;
     margin: 0 auto;
-    
+    font-family: 'InfinitySans-RegularA1';
 }
 
 
@@ -62,7 +72,16 @@ div.first{
     margin-left: 10%;
     padding-bottom: 5px;
     padding-top: 5px;
-
-.btn-primary {
-    margin-left: 45%;
 }
+.hi{
+    width: 150px; 
+    height: 50px; 
+    background-color: #FF921B; 
+    margin-left: 45%;
+    border: none;
+}
+.row{
+    font-size: 20px;
+    margin-top: 3%;
+}
+
