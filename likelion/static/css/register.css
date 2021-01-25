@@ -16,19 +16,14 @@ div.first{
     width: 70%;
     height: 600px;
     margin: 0 auto;
-    
-    
-
 }
-
-
  div.top{ /*배경이미지 */
     background-image: url("../register_img/memo1.png");
     width: 100%; height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
    
-    
+
 }
 .in{
     padding-top: 10%;
@@ -38,13 +33,36 @@ div.first{
 
 }
 .second {
-    height: 3000px;
+    width: 70%;
+    height: 1200px;
+    margin: 0 auto;
     
 }
 
+
+
 .bottom {
     background-image:url("../register_img/memo2.png");
-    background-size: contain;
+    width: 100%; height: 100%;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
-    
+
+.form-control{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 200px;
+    margin-bottom: 10px;
+}
+.q{
+    font-size: 20px;
+    margin-left: 10%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+.btn-primary {
+    margin-left: 45%;
+}
