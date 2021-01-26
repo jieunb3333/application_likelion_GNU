@@ -8,17 +8,14 @@ body{
     background-color: #2F2F2F;
 }
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    .in{
-        width: 80%;
-        height: 80%;
+    /* .in{
         padding-top: 10%;
-        padding-bottom: 10%;
-        padding-right: 10%;
-        padding-left: 10%;
+        padding-bottom: 5%;
+        padding-right: 5%;
+        padding-left: 5%;
         font-family: 'InfinitySans-RegularA1';
-        font-size: 1vh;
     
-    }
+    } */
     label{
 
     }
@@ -38,13 +35,46 @@ body{
 }
 
 @media (max-width: 767.98px) { 
-    
+    .pi{
+        margin-top: 50px;
+        font-size: 25px;
+        margin-bottom: 30px;
+
+    }
+    .form-check-input{
+        size: 10%;
+    }
+    .form-check-label{
+        font-size: small;
+        padding-right: 10%;
+    }
+    .h4{
+        font-size: small;
+    }
+
     .cutelion{
         width: 10%;
     }
     .cuteline{
         border: 2px solid #FF9E1B;
         width: 10%;
+    }
+    .in{
+        height: 100%;
+        padding-top: 10%;
+        padding-bottom: 15%;
+        padding-right: 5%;
+        padding-left: 5%;
+        font-family: 'InfinitySans-RegularA1';
+    
+    }
+    .row{
+        margin-top: 3%;
+    }
+    .button{
+        margin: auto;
+        width: 30%;
+        height: 50px;
     }
 }
 
@@ -81,17 +111,18 @@ div.first{
     width: 100%; height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    
    
 
 }
 .in{
-    width: 80%;
-    height: 80%;
+    height: 100%;
     padding-top: 10%;
-    padding-bottom: 10%;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
     font-family: 'InfinitySans-RegularA1';
+    /* font-size: 20px; */
 
 }
 .second {
@@ -120,20 +151,28 @@ div.first{
     margin-bottom: 10px;
 }
 .q{
-    font-size: 20px;
+    /* font-size: 20px; */
+
     margin-left: 10%;
+    margin-right: 10%;
     padding-bottom: 5px;
     padding-top: 5px;
 }
+.button{
+    margin: auto;
+    width: 25%;
+    height: 50px;
+}
 .hi{
-    width: 150px; 
-    height: 50px; 
+    width: 100%; 
+    height: 100%;
     background-color: #FF921B; 
-    margin-left: 45%;
+    margin: auto;
     border: none;
+    font-size: 100%;
 }
 .row{
-    font-size: 20px;
+    /* font-size: 20px; */
     margin-top: 3%;
 }
 
