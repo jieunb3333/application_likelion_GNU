@@ -4,7 +4,7 @@ from django.db import models
 class User(models.Model):
     user_id=models.CharField(max_length=10)
     user_name=models.CharField(max_length=30)
-    user_grade=models.IntegerField()
+    user_grade=models.IntegerField(null=True)
     user_pn=models.CharField(max_length=11)
     user_major=models.CharField(max_length=30)
     user_q1=models.TextField()
