@@ -16,9 +16,7 @@ body{
         font-family: 'InfinitySans-RegularA1';
     
     } */
-    label{
-
-    }
+    
     .cutelion{
         width: 10%;
     }
@@ -32,6 +30,7 @@ body{
         margin: 0 auto;
         
     }
+
 }
 
 @media (max-width: 767.98px) { 
@@ -77,6 +76,8 @@ body{
         width: 30%;
         height: 50px;
     }
+ 
+
 }
 
 

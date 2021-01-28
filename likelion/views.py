@@ -10,5 +10,9 @@ def view(request):
 def register(request):
     return render(request,'register.html')
 
+def register_check(request):
+    return render(request,'register_check.html')
+
 def check(request):
     return render(request,'check.html')
+
