@@ -11,14 +11,14 @@
 
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/view.css' %}">
 {% endblock link %}
 
 
 
 {% block content %}
 <div class="container">
-    <form action="{% url 'register_action' %}"  method="POST">
+    <form action="{% url 'intro' %}"  method="POST">
         {% for inform in inform %}
             {% csrf_token %}
             <div class="row" style="margin-top:5%;">
@@ -84,17 +84,18 @@
                     <div class="out">
                         <br><br><br>
                         <p class="q">1. 지원동기가 어떻게되나요?</p>
-                        <p>{{inform.user_q1}}</p>
+                        <p class="ans">{{inform.user_q1}}</p>
                         <p  class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                        <p>{{inform.user_q2}}</p>
+                        <p class="ans">{{inform.user_q2}}</p>
                         <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                        <p>{{inform.user_q3}}</p>
+                        <p class="ans">{{inform.user_q3}}</p>
                         <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                        <p>{{inform.user_q4}}</p>
+                        <p class="ans">{{inform.user_q4}}</p>
                         <br><br><br>
                         <div class="button">
-                            <button type="submit" class="hi"><strong>제출하기</strong></button>
+                            <button type="submit" class="hi"><strong>메인 페이지</strong></button>
                         </div>
+                        
                         
                     </div>
                 </div>
