@@ -25,7 +25,7 @@ def register_action(request):
     return redirect('/register_check/')
 
 def register_check(request):
-    inform=User.objects.filter(user_name='화공가은이')
+    inform=User.objects.filter(pk=3)
     return render(request,'register_check.html',{'inform':inform})
 
 def check(request):
