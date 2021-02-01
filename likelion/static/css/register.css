@@ -144,13 +144,13 @@ div.first{
     margin-left: auto;
     margin-right: auto;
 }
-
-.form-control{
+.texts{
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     height: 200px;
     margin-bottom: 10px;
+    
 }
 .q{
     /* font-size: 20px; */
@@ -177,4 +177,16 @@ div.first{
     /* font-size: 20px; */
     margin-top: 3%;
 }
-
+input:focus{
+    outline-color: rgb(102, 175, 233);
+    box-shadow: 0 0 8px rgb(102, 175, 233);
+    outline-offset: 0ch;
+    border-color: rgb(102,175,233);
+    
+}
+.grade:focus{
+    outline-color: rgb(102, 175, 233);
+    box-shadow: 0 0 8px rgb(102, 175, 233);
+    outline-offset: 0ch;
+    border-color: rgb(102,175,233);
+}
