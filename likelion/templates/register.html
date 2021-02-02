@@ -87,16 +87,16 @@
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea name="q1" placeholder="30자 이상 입력해 주세요" class="form-control text" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <textarea name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p  class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                    <textarea name="q2" placeholder="30자 이상 입력해 주세요" class="form-control text" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <textarea name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                    <textarea name="q3" placeholder="30자 이상 입력해 주세요" class="form-control text" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <textarea name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea name="q4" style="outline: 0 none;" class="form-control text" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    <textarea name="q4" style="outline: 0 none;" class="form-control texts" id="exampleFormControlTextarea1" rows="5"></textarea>
                     <br><br><br>
                     <div class="button">
                         <button type="submit" class="hi"><strong>제출하기</strong></button>
@@ -109,4 +109,34 @@
         
     </form>
 </div>
+<script>
+    function onSignIn() {
+        var profile = gauth.currentUser.get().getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+    function checkLoginStatus() {
+        if (gauth.isSignedIn.get()) {
+            var profile = gauth.currentUser.get().getBasicProfile();
+            onSignIn();
+        }
+    }
+    function init() {
+        console.log('init');
+        gapi.load('auth2', function () {
+            console.log('auth2');
+            window.gauth = gapi.auth2.init({
+                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+            })
+            gauth.then(function () {
+                console.log('gooleAuth succes');
+                checkLoginStatus()
+            }, function () {
+                console.log('gooleauth fail');
+            });
+        });
+    }
+</script>
 {% endblock content %}
