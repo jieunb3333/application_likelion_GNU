@@ -63,15 +63,21 @@
             </div>
         </div>
     </div>
-    <!-- <script>
+    <script>
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            $.ajax({ url: "/register", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소 
+                data: { user_id: profile.getId() }, // HTTP 요청과 함께 서버로 보낼 데이터 
+                method: "GET", // HTTP 요청 메소드(GET, POST 등) 
+                dataType: "json" // 서버에서 보내줄 데이터의 타입 }
+    })
+            
         }
-    </script> -->
+    </script>
     <script>
         function checkLoginStatus(){
             var loginBtn = document.querySelector('#loginBtn');
@@ -101,5 +107,7 @@
                 });
             });
         }
+        
+
     </script>
 {% endblock content %}
