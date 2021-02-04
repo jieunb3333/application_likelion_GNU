@@ -1,9 +1,95 @@
+@font-face {
+    font-family: 'InfinitySans-RegularA1';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
     background-color: #2F2F2F;
 }
-.logo{
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    /* .in{
+        padding-top: 10%;
+        padding-bottom: 5%;
+        padding-right: 5%;
+        padding-left: 5%;
+        font-family: 'InfinitySans-RegularA1';
     
+    } */
+    
+    .cutelion{
+        width: 10%;
+    }
+    .cuteline{
+        border: 2px solid #FF9E1B;
+        width: 10%;
+    } 
+    div.first{
+        width: 90vh;
+        height: 600px;
+        margin: 0 auto;
+        
+    }
+
 }
+
+@media (max-width: 767.98px) { 
+
+    .pi{
+        margin-top: 50px;
+        font-size: 25px;
+        margin-bottom: 30px;
+
+    }
+    .form-check-input{
+        size: 10%;
+    }
+    .form-check-label{
+        font-size: small;
+        padding-right: 10%;
+    }
+    .h4{
+        font-size: small;
+    }
+
+    .cutelion{
+        width: 100%;
+    }
+    .cuteline{
+        border: 2px solid #FF9E1B;
+        width: 100%;
+    }
+    .in{
+        height: 100%;
+        padding-top: 10%;
+        padding-bottom: 15%;
+        padding-right: 5%;
+        padding-left: 5%;
+        font-family: 'InfinitySans-RegularA1';
+    
+    }
+    .row{
+        margin-top: 3%;
+    }
+    .button{
+        margin: auto;
+        width: 30%;
+        height: 50px;
+    }
+ 
+
+}
+
+
+.cutelion{
+    width: 100%;
+}
+.cuteline{
+    border: 2px solid #FF9E1B;
+    width: 100%;
+}
+
+
 .container {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -13,30 +99,36 @@ body{
 }
 
 div.first{
-    width: 70%;
+    width: 90%;
     height: 600px;
     margin: 0 auto;
+    
 }
+
  div.top{ /*배경이미지 */
     background-image: url("../register_img/memo1.png");
     width: 100%; height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    
    
 
 }
 .in{
+    height: 100%;
     padding-top: 10%;
-    padding-bottom: 10%;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-family: 'InfinitySans-RegularA1';
+    /* font-size: 20px; */
 
 }
 .second {
-    width: 70%;
-    height: 1200px;
+    width: 90%;
+    height: 1400px;
     margin: 0 auto;
-    
+    font-family: 'InfinitySans-RegularA1';
 }
 
 
@@ -49,20 +141,49 @@ div.first{
     margin-left: auto;
     margin-right: auto;
 }
-
-.form-control{
+.texts{
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     height: 200px;
     margin-bottom: 10px;
+    
 }
 .q{
-    font-size: 20px;
+    /* font-size: 20px; */
+
     margin-left: 10%;
+    margin-right: 10%;
     padding-bottom: 5px;
     padding-top: 5px;
-
-.btn-primary {
-    margin-left: 45%;
+}
+.button{
+    margin: auto;
+    width: 25%;
+    height: 50px;
+}
+.hi{
+    width: 100%; 
+    height: 100%;
+    background-color: #FF921B; 
+    margin: auto;
+    border: none;
+    font-size: 100%;
+}
+.row{
+    /* font-size: 20px; */
+    margin-top: 3%;
+}
+input:focus{
+    outline-color: rgb(102, 175, 233);
+    box-shadow: 0 0 8px rgb(102, 175, 233);
+    outline-offset: 0ch;
+    border-color: rgb(102,175,233);
+    
+}
+.grade:focus{
+    outline-color: rgb(102, 175, 233);
+    box-shadow: 0 0 8px rgb(102, 175, 233);
+    outline-offset: 0ch;
+    border-color: rgb(102,175,233);
 }
