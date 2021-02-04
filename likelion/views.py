@@ -32,5 +32,6 @@ def register_check(request):
     return render(request,'register_check.html',{'inform':inform})
 
 def check(request):
-    return render(request,'check.html')
+    inform=User.objects.all #추후에 pk user_id로 바꾸기
+    return render(request,'check.html',{'inform':inform})
 

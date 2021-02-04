@@ -11,7 +11,7 @@ class User(models.Model):
     user_q2=models.TextField()
     user_q3=models.TextField()
     user_q4=models.TextField()
-    # user_pass=models.CharField(max_length=10)
+    user_pass=models.IntegerField(default=2)
     def __str__(self):
         return self.user_name + self.user_major
 
