@@ -12,18 +12,10 @@
 
 {% block link %}
 
-<script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-
-    }
-</script>
 <script>
+    let clickRegisterBtn;
+
     const removeContainerNone = () => {
         const container = document.querySelector('.container');
         container.classList.remove("display_none")
@@ -37,8 +29,16 @@
             })
             gauth.then(function () {
                 console.log('gooleAuth success');
+                clickRegisterBtn = () => {
+                    gauth.signIn().then(function () {
+                        window.location.href = 'http://localhost:8000/register/'
+                    });
+                }
             }, function () {
                 console.log('gooleauth fail');
+                clickRegisterBtn = () => {
+                    window.location.href = 'http://localhost:8000/register/'
+                }
             }).then(removeContainerNone)
         });
 
@@ -61,8 +61,8 @@
     <hr>
     <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
     <div class="row">
-        <a href="{% url 'register' %}" id="loginBtn"><button type="button"
-                class="orange"><strong>지원하기/지원확인</strong></button></a>
+        <button type="button" id="loginBtn" class="orange"
+            onclick="clickRegisterBtn()"><strong>지원하기/지원확인</strong></button>
     </div>
     <div class="row inform-box">
         <div class="supply-inform">
