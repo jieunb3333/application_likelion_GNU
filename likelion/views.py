@@ -18,7 +18,8 @@ def register(request):
 def register_action(request):
 
     inform = User()
-    inform.user_id = request.POST["googleID"]
+    google_id = request.POST["googleID"]
+    inform.user_id = google_id
     inform.user_name = request.POST["name"]
     inform.user_pn = request.POST["phonenumber"]
     inform.user_grade = request.POST["grade"]
@@ -28,11 +29,13 @@ def register_action(request):
     inform.user_q3 = request.POST["q3"]
     inform.user_q4 = request.POST["q4"]
     inform.save()
+    request.session["google_id"] = google_id
     return redirect("/register_check/")
 
 
 def register_check(request):
-    inform = User.objects.filter(pk=3)
+    google_id = request.session["google_id"]
+    inform = User.objects.filter(user_id=google_id)
     return render(request, "register_check.html", {"inform": inform})
 
 
