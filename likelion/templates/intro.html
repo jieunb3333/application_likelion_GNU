@@ -5,6 +5,7 @@
 
 
 {% block title %} 
+지원 페이지
 {% endblock title %}
 
 
@@ -65,6 +66,36 @@
 
     </script>
     <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+    <script>
+        function checkLoginStatus(){
+            var loginBtn = document.querySelector('#loginBtn');
+            var nameTxt = document.querySelector('#name');
+                    if (gauth.isSignedIn.get()) {
+                        console.log('logined');
+                        loginBtn.value = 'Logout';
+                        var profile = gauth.currentUser.get().getBasicProfile();
+                        console.log(profile.getName());
+                    } else {
+                        console.log('logouted');
+                        loginBtn.value = 'Login';
+                    }
+        }
+        function init() {
+            console.log('init');
+            gapi.load('auth2', function () {
+                console.log('auth2');
+                window.gauth = gapi.auth2.init({
+                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+                })
+                gauth.then(function () {
+                    console.log('gooleAuth succes');
+                    checkLoginStatus()
+                }, function () {
+                    console.log('gooleauth fail');
+                });
+            });
+        }
+    </script>
 {% endblock link %}
 
 
