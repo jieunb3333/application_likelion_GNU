@@ -3,6 +3,7 @@ from .models import User
 
 # Create your views here.
 def intro(request):
+    
     return render(request,'intro.html')
 
 def view(request):
