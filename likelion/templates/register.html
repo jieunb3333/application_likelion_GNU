@@ -51,12 +51,13 @@
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     }
-    function checkLoginStatus() {
-        if (gauth.isSignedIn.get()) {
-            var profile = gauth.currentUser.get().getBasicProfile();
-            onSignIn();
-        }
+
+    const setGoogleID = () => {
+        var profile = gauth.currentUser.get().getBasicProfile();
+        const googleID = document.querySelector('#googleID')
+        googleID.value = profile.getId()
     }
+
     function init() {
         console.log('init');
         gapi.load('auth2', function () {
@@ -66,10 +67,9 @@
             })
             gauth.then(function () {
                 console.log('gooleAuth succes');
-                checkLoginStatus()
             }, function () {
                 console.log('gooleauth fail');
-            });
+            }).then(setGoogleID)
         });
     }
 </script>
@@ -174,7 +174,7 @@
             </div>
 
         </div>
-
+        <input id="googleID" type="hidden" name="googleID" value="">
     </form>
 </div>
 
