@@ -20,7 +20,7 @@
         const container = document.querySelector('.container');
         container.classList.remove("display_none")
     }
-    window.onLoadCallback = function () {
+    window.onload = function () {
         console.log('init');
         gapi.load('auth2', function () {
             console.log('auth2');

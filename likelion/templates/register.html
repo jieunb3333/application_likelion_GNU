@@ -15,14 +15,6 @@
 
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 <script>
-    function onSignIn() {
-        var profile = gauth.currentUser.get().getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
-
     const setGoogleID = () => {
         var profile = gauth.currentUser.get().getBasicProfile();
         const googleID = document.querySelector('#googleID')
@@ -34,8 +26,7 @@
         container.classList.remove("display_none")
     }
 
-    window.onLoadCallback = function () {
-        console.log('init');
+    window.onload = function () {
         gapi.load('auth2', function () {
             console.log('auth2');
             window.gauth = gapi.auth2.init({
