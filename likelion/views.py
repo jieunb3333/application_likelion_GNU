@@ -3,12 +3,15 @@ from .models import User
 
 # Create your views here.
 def intro(request):
+    
     return render(request,'intro.html')
 
 def view(request):
     return render(request,'view.html')
 
 def register(request):
+    user_id=request.GET.get('user_id')
+    print(user_id)
     return render(request,'register.html')
 
 def register_action(request):
