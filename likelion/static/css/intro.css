@@ -13,7 +13,6 @@ body {
   background-size: cover;
   background: url("../intro_image/intro_background.png") no-repeat center/cover
     fixed;
-    
 }
 .container {
   color: white;
@@ -160,4 +159,9 @@ hr {
     margin-left: 2vw;
     width: 10vw;
   }
+}
+
+/* js */
+.display_none{
+  display: none;
 }
