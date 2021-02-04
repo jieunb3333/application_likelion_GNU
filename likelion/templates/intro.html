@@ -24,35 +24,10 @@
     }
 </script>
 <script>
-    function rendid() {
-        var profile = gauth.currentUser.get().getBasicProfile();
-        console.log('됨');
-        $.ajax({
-            url: "/register", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소 
-            data: { user_id: profile.getId() }, // HTTP 요청과 함께 서버로 보낼 데이터 
-            method: "GET", // HTTP 요청 메소드(GET, POST 등) 
-            dataType: "json", // 서버에서 보내줄 데이터의 타입 }
-        })
-    }
-    function checkLoginStatus() {
-        var loginBtn = document.querySelector('#loginBtn');
-        var nameTxt = document.querySelector('#name');
-        if (gauth.isSignedIn.get()) {
-            console.log('logined');
-            loginBtn.value = 'Logout';
-            var profile = gauth.currentUser.get().getBasicProfile();
-            console.log(profile.getName());
-
-        } else {
-            console.log('logouted');
-            loginBtn.value = 'Login';
-        }
-        // 로그인 되면 그때돼서야 화면 보이게 처리
-        const removeNone = () => {
-            const container = document.querySelector('.container');
-            container.classList.remove("display_none")
-        }
-        removeNone()
+    const removeContainerNone = () => {
+        console.log('d')
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none")
     }
     function init() {
         console.log('init');
@@ -62,11 +37,10 @@
                 client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
             })
             gauth.then(function () {
-                console.log('gooleAuth succes');
-                checkLoginStatus()
+                console.log('gooleAuth success');
             }, function () {
                 console.log('gooleauth fail');
-            });
+            }).then(removeContainerNone)
         });
 
     }
@@ -88,21 +62,8 @@
     <hr>
     <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
     <div class="row">
-        <button type="button" id="loginBtn" class="orange" onclick="
-            if(this.value === 'Login'){//로그아웃된 상태
-                gauth.signIn().then(function(){
-                    rendid();
-                    console.log('gauth.signIn()');
-                    checkLoginStatus();
-                    window.location.href = 'http://localhost:8000/register/'
-                });
-            } else {//로그인된 상태
-               
-                    rendid();
-                    window.location.href = 'http://localhost:8000/register/'
-            
-            }
-            "><strong>지원하기/지원확인</strong></button>
+        <a href="{% url 'register' %}" id="loginBtn"><button type="button"
+                class="orange"><strong>지원하기/지원확인</strong></button></a>
     </div>
     <div class="row inform-box">
         <div class="supply-inform">
