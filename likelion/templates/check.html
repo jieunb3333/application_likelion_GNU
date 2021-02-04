@@ -14,6 +14,52 @@
     <link rel="stylesheet" href="{% static 'css/check.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <script>
+        function checkPass(profile){
+            //로그인 된 경우 합불 확인 가능.
+            if(1){
+                //합격
+                var div = document.getElementById("passDiv")
+                div.style.display = 'block'
+
+            }
+            else if(1){
+                //불합격
+                var div = document.getElementById("nonPassDiv")
+                div.style.display = 'block'
+                
+            }
+            else{
+                //데이터 누락
+                var div = document.getElementById("errorDiv")
+                div.style.display = 'block'
+
+            };
+
+        }
+        function checkLoginStatus() {
+            if (gauth.isSignedIn.get()) {
+                var profile = gauth.currentUser.get().getBasicProfile();
+                checkPass(profile);
+            }
+            //로그인 안되었을경우 추가하기 else
+        }
+        function init() {
+            console.log('init');
+            gapi.load('auth2', function () {
+                console.log('auth2');
+                window.gauth = gapi.auth2.init({
+                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+                })
+                gauth.then(function () {
+                    console.log('gooleAuth succes');
+                    checkLoginStatus()
+                }, function () {
+                    console.log('gooleauth fail');
+                });
+            });
+        }
+    </script>
 {% endblock link %}
 
 
@@ -21,20 +67,36 @@
 {% block content %}
 <div class="container-fluid">
     <img class="logo" src="{% static 'check_img\logo.png' %}" alt="My image">        
-    
+
     <p>님,</p>
     <br>
-    <p class="pass">서류가 통과되었습니다!</p>
-    <br>
-    <p>면접 날짜는<br>
-    <br><br>
-        5분 미리 입장해주세요.
-    </p>
-    <br><br>
-    <p>
-        줌링크 : <a href="https://likelion.net/">"https://likelion.net/"</a>
-    </p>
-    <br><br>
+    <div id="passDiv">
+        <p class="pass text-focus-in">서류가 통과되었습니다!</p>
+        <br>
+        <p>면접 날짜는<br>
+        
+            <br><br>
+            5분 미리 입장해주세요.
+        </p>
+        <br><br>
+        <p>
+            줌링크 : <a href="https://likelion.net/">"https://likelion.net/"</a>
+        </p>
+        <br><br>
+
+    </div>
+    <div id="nonPassDiv">
+        <p>
+            아쉽지만~~
+        </p>
+
+    </div>
+    <div id="errorDiv">
+        <p>error! 
+        경상대 멋사로 문의 주세요.</p>
+    </div>
+
+    
 
 </div>
 
