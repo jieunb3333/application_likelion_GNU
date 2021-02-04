@@ -58,6 +58,11 @@
         googleID.value = profile.getId()
     }
 
+    const removeContainerNone = () => {
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none")
+    }
+
     function init() {
         console.log('init');
         gapi.load('auth2', function () {
@@ -69,7 +74,7 @@
                 console.log('gooleAuth succes');
             }, function () {
                 console.log('gooleauth fail');
-            }).then(setGoogleID)
+            }).then(removeContainerNone).then(setGoogleID)
         });
     }
 </script>
@@ -78,7 +83,7 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container display_none">
     <form action="{% url 'register_action' %}" method="POST">
         {% csrf_token %}
         <div class="row" style="margin-top:5%;">
