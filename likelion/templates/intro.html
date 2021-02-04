@@ -20,7 +20,7 @@
         const container = document.querySelector('.container');
         container.classList.remove("display_none")
     }
-    function init() {
+    window.onLoadCallback = function () {
         console.log('init');
         gapi.load('auth2', function () {
             console.log('auth2');
@@ -30,14 +30,15 @@
             gauth.then(function () {
                 console.log('gooleAuth success');
                 clickRegisterBtn = () => {
-                    gauth.signIn().then(function () {
-                        window.location.href = 'http://localhost:8000/register/'
-                    });
+                    window.location.href = 'http://localhost:8000/register/'
                 }
             }, function () {
                 console.log('gooleauth fail');
+
                 clickRegisterBtn = () => {
-                    window.location.href = 'http://localhost:8000/register/'
+                    gauth.signIn().then(function () {
+                        window.location.href = 'http://localhost:8000/register/'
+                    });
                 }
             }).then(removeContainerNone)
         });
