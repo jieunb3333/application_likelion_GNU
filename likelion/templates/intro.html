@@ -5,12 +5,43 @@
 
 
 {% block title %} 
+지원 페이지
 {% endblock title %}
 
 
 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+    <script>
+        function checkLoginStatus(){
+            var loginBtn = document.querySelector('#loginBtn');
+            var nameTxt = document.querySelector('#name');
+                    if (gauth.isSignedIn.get()) {
+                        console.log('logined');
+                        loginBtn.value = 'Logout';
+                        var profile = gauth.currentUser.get().getBasicProfile();
+                        console.log(profile.getName());
+                    } else {
+                        console.log('logouted');
+                        loginBtn.value = 'Login';
+                    }
+        }
+        function init() {
+            console.log('init');
+            gapi.load('auth2', function () {
+                console.log('auth2');
+                window.gauth = gapi.auth2.init({
+                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+                })
+                gauth.then(function () {
+                    console.log('gooleAuth succes');
+                    checkLoginStatus()
+                }, function () {
+                    console.log('gooleauth fail');
+                });
+            });
+        }
+    </script>
 {% endblock link %}
 
 
@@ -63,43 +94,4 @@
             </div>
         </div>
     </div>
-    <!-- <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-    </script> -->
-    <script>
-        function checkLoginStatus(){
-            var loginBtn = document.querySelector('#loginBtn');
-            var nameTxt = document.querySelector('#name');
-                    if (gauth.isSignedIn.get()) {
-                        console.log('logined');
-                        loginBtn.value = 'Logout';
-                        var profile = gauth.currentUser.get().getBasicProfile();
-                        console.log(profile.getName());
-                    } else {
-                        console.log('logouted');
-                        loginBtn.value = 'Login';
-                    }
-        }
-        function init() {
-            console.log('init');
-            gapi.load('auth2', function () {
-                console.log('auth2');
-                window.gauth = gapi.auth2.init({
-                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-                })
-                gauth.then(function () {
-                    console.log('gooleAuth succes');
-                    checkLoginStatus()
-                }, function () {
-                    console.log('gooleauth fail');
-                });
-            });
-        }
-    </script>
 {% endblock content %}
