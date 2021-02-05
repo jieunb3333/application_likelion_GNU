@@ -49,34 +49,41 @@
     <img class="logo" src="{% static 'check_img\logo.png' %}" alt="My image">
     {% for inform in inform %}
     {% csrf_token %}
+
     <input type="hidden" value={{inform.user_pass}} id="user_pass">
-    <p>{{inform.user_name}}님,</p>
-    <br>
 
     <div id="passDiv">
+        <p>{{inform.user_name}}님,  경상대 '멋쟁이 사자처럼'에 지원해주셔서 감사합니다.</p>
+        <br><br>
         <p class="pass text-focus-in">서류가 통과되었습니다!</p>
         <br>
-        <p>면접 날짜는<br>
-
-            <br><br>
-            5분 미리 입장해주세요.
+        <p>면접 일시는</p>
+            <p class="textTransformX"><strong>{{inform.user_time}}</strong></p>
+            <br><br><br>
+            <p>하단 링크로 5분 미리 입장바랍니다😊
         </p>
-        <br><br>
+        <br>
         <p>
-            줌링크 : <a href="https://likelion.net/">"https://likelion.net/"</a>
+            Zoom Link : <a class="textTransformX" href="https://likelion.net/">"https://likelion.net/"</a>
         </p>
         <br><br>
 
     </div>
     <div id="nonPassDiv">
+        <p class="pass text-shadow-drop-bottom">{{inform.user_name}}님, 경상대 '멋쟁이 사자처럼'에 지원해주셔서 감사합니다.</p>
+        <br><br>
         <p>
-            아쉽지만~~
+            아쉽지만 이번 9기 멋쟁이 사자처럼과 함께하지 못하게 되었습니다.
+            
         </p>
 
     </div>
     <div id="errorDiv">
-        <p>error!
-            경상대 멋사로 문의 주세요.</p>
+      
+            <div class="bouncingLoader"></div>
+            <br><br>
+            <p><strong>ERROR : 경상대 멋쟁이 사자처럼으로 문의부탁드립니다.</strong></p>
+            <strong style="color: rgb(128, 193, 255);"> facebook : </strong><a href="https://www.facebook.com/likeliongnu/"> https://www.facebook.com/likeliongnu/ </a>
     </div>
 
     {% endfor %}

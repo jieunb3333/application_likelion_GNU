@@ -12,6 +12,7 @@ class User(models.Model):
     user_q3=models.TextField()
     user_q4=models.TextField()
     user_pass=models.IntegerField(default=2)
+    user_time=models.CharField(max_length=20,default='00:00')
     def __str__(self):
         return self.user_name + self.user_major
 

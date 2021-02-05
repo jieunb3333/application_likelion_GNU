@@ -32,6 +32,21 @@ def register_check(request):
     return render(request,'register_check.html',{'inform':inform})
 
 def check(request):
-    inform=User.objects.all #추후에 pk user_id로 바꾸기
+    # #user_id 받아주기 
+    # #check 페이지 전 데이터 보낼때 <input type='hidden' value={{profile.getId()}} name='user_id'> 추가
+    # #user_id=request.GET.get('user_id')
+    # if(user_id=='null'):
+    #     return render(request,'intro.html')
+    #     #user_id가 존재하지 않으면 intro로 이동. / 로그인부터 하도록 함.
+    
+    # else:
+    #     inform=User.objects.filter(pk=user_id) #추후에 pk user_id로 바꾸기
+    #     return render(request,'check.html',{'inform':inform})
+    #     #현재 로그인 한 계정의 user_id를 비교하여 사용자 정보를 가져옴
+    # ctrl / 주석
+    inform=User.objects.all
     return render(request,'check.html',{'inform':inform})
 
+
+    
+    
