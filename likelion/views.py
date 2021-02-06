@@ -37,7 +37,7 @@ def register_action(request):
         return render(request, "register.html",{"inform": inform})
     else:
         if User.objects.filter(user_id=google_id).exists()==True:
-            inform = User.objects.get(user_id=google_id)
+            inform = User.objects.filter(user_id=google_id)
         else: inform = User() 
         inform.user_id = google_id
         inform.user_name = request.POST["name"]
