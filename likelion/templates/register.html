@@ -46,19 +46,23 @@
         const checkbox=document.querySelector('#checkbox');
         const checkbox_value=document.querySelector('#checkbox_value');
         checkbox_value.value=checkbox.value;
-        if(checkbox.value=='no_checked'){
+        if(checkbox.value === 'no_checked'){
             alert('개인정보 수집 및 이용에 동의해 주세요');
+            return false;
         }
-        
+        else {
+            var url = "{% url 'register_action' %}";
+            document.forms[0].action = url;
+        }
     }
  </script>
 {% endblock link %}
 
-
+<!-- {% url 'register_action' %} -->
 
 {% block content %}
 <div class="container display_none">
-    <form action="{% url 'register_action' %}" method="POST">
+    <form method="POST" action="#">
         {% csrf_token %}
         <div class="row" style="margin-top:5%;">
 
