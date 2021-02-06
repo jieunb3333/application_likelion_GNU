@@ -4,153 +4,93 @@
 
 
 
-{% block title %} 
+{% block title %}
 지원 페이지
 {% endblock title %}
 
 
 
 {% block link %}
-    
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            
-            
-        }
-    </script>
-    <script>
-        function rendid(){
-            var profile = gauth.currentUser.get().getBasicProfile();
-            console.log('됨');
-            $.ajax({ url: "/register", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소 
-                                data: { user_id: profile.getId() }, // HTTP 요청과 함께 서버로 보낼 데이터 
-                                method: "GET", // HTTP 요청 메소드(GET, POST 등) 
-                                dataType: "json", // 서버에서 보내줄 데이터의 타입 }
-    })
-        }
-        function checkLoginStatus(){
-            var loginBtn = document.querySelector('#loginBtn');
-            var nameTxt = document.querySelector('#name');
-                    if (gauth.isSignedIn.get()) {
-                        console.log('logined');
-                        loginBtn.value = 'Logout';
-                        var profile = gauth.currentUser.get().getBasicProfile();
-                        console.log(profile.getName());
-                        
-                    } else {
-                        console.log('logouted');
-                        loginBtn.value = 'Login';
-                    }
-        }
-        function init() {
-            console.log('init');
-            gapi.load('auth2', function () {
-                console.log('auth2');
-                window.gauth = gapi.auth2.init({
-                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-                })
-                gauth.then(function () {
-                    console.log('gooleAuth succes');
-                    checkLoginStatus()
-                }, function () {
-                    console.log('gooleauth fail');
-                });
-            });
-        }
-        
 
-    </script>
-    <link rel="stylesheet" href="{% static 'css/intro.css' %}">
-    <script>
-        function checkLoginStatus(){
-            var loginBtn = document.querySelector('#loginBtn');
-            var nameTxt = document.querySelector('#name');
-                    if (gauth.isSignedIn.get()) {
-                        console.log('logined');
-                        loginBtn.value = 'Logout';
-                        var profile = gauth.currentUser.get().getBasicProfile();
-                        console.log(profile.getName());
-                    } else {
-                        console.log('logouted');
-                        loginBtn.value = 'Login';
-                    }
-        }
-        function init() {
-            console.log('init');
-            gapi.load('auth2', function () {
-                console.log('auth2');
-                window.gauth = gapi.auth2.init({
-                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-                })
-                gauth.then(function () {
-                    console.log('gooleAuth succes');
-                    checkLoginStatus()
-                }, function () {
-                    console.log('gooleauth fail');
-                });
-            });
-        }
-    </script>
+
+<script>
+    let clickRegisterBtn;
+
+    const removeContainerNone = () => {
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none")
+    }
+    window.onload = function () {
+        console.log('init');
+        gapi.load('auth2', function () {
+            console.log('auth2');
+            window.gauth = gapi.auth2.init({
+                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+            })
+            gauth.then(function () {
+                console.log('gooleAuth success');
+                clickRegisterBtn = () => {
+                    window.location.href = 'http://localhost:8000/register/'
+                }
+            }, function () {
+                console.log('gooleauth fail');
+
+                clickRegisterBtn = () => {
+                    gauth.signIn().then(function () {
+                        window.location.href = 'http://localhost:8000/register/'
+                    });
+                }
+            }).then(removeContainerNone)
+        });
+
+    }
+
+
+</script>
+<link rel="stylesheet" href="{% static 'css/intro.css' %}">
 {% endblock link %}
 
 
 
 {% block content %}
-    <div class="container">
-        <div class="row" >
-            <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
-        </div>
-        <div class="row title">경상대 멋쟁이사자처럼 9기</div>
-        <div class="row title2"><strong>경상대 멋사 9기</strong></div><hr>
-        <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
-        <div class="row">
-            <button type="button" id="loginBtn" class="orange" onclick="
-            if(this.value === 'Login'){//로그아웃된 상태
-                gauth.signIn().then(function(){
-                    rendid();
-                    console.log('gauth.signIn()');
-                    checkLoginStatus();
-                    window.location.href = 'http://localhost:8000/register/'
-                });
-            } else {//로그인된 상태
-               
-                    rendid();
-                    window.location.href = 'http://localhost:8000/register/'
-            
-            }
-            "><strong>지원하기/지원확인</strong></button>
-        </div>
-        <div class="row inform-box">
-            <div class="supply-inform">
-                <div class="col col-left">
-                    지원 날짜<br>
-                    서류 결과 확인<br>
-                    최종확인
-                </div>
-                <div class="col col-middle">
-                    :<br>:<br>:
-                </div>
-                <div class="col col-right">
-                     2월22일~3월12일<br>3월 14일~<br>개별 통보
-                </div>
+<div class="container display_none">
+    <div class="row">
+        <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
+    </div>
+    <div class="row title">경상대 멋쟁이사자처럼 9기</div>
+    <div class="row title2"><strong>경상대 멋사 9기</strong></div>
+    <hr>
+    <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
+    <div class="row">
+        <button type="button" id="loginBtn" class="orange"
+            onclick="clickRegisterBtn()"><strong>지원하기/지원확인</strong></button>
+    </div>
+    <div class="row inform-box">
+        <div class="supply-inform">
+            <div class="col col-left">
+                지원 날짜<br>
+                서류 결과 확인<br>
+                최종확인
             </div>
-        </div>
-        <div class="row contact">
-            <div class="row" style="color: white;">CONTACT</div>
-            <div class="row sns-logo">
-                <a href="https://www.instagram.com/likelion_gnu/">
-                    <img class="insta"  src="{% static 'intro_image/insta.png' %}" alt="" width="52px">
-                </a>
-                <a href="https://ko-kr.facebook.com/likeliongnu/">
-                    <img class="facebook"  src="{% static 'intro_image/facebook.png' %}" alt="" width="52px">
-                </a>
+            <div class="col col-middle">
+                :<br>:<br>:
+            </div>
+            <div class="col col-right">
+                2월22일~3월12일<br>3월 14일~<br>개별 통보
             </div>
         </div>
     </div>
+    <div class="row contact">
+        <div class="row" style="color: white;">CONTACT</div>
+        <div class="row sns-logo">
+            <a href="https://www.instagram.com/likelion_gnu/">
+                <img class="insta" src="{% static 'intro_image/insta.png' %}" alt="" width="52px">
+            </a>
+            <a href="https://ko-kr.facebook.com/likeliongnu/">
+                <img class="facebook" src="{% static 'intro_image/facebook.png' %}" alt="" width="52px">
+            </a>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
