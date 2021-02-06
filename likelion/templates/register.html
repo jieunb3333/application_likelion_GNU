@@ -48,9 +48,10 @@
         checkbox_value.value=checkbox.value;
         if(checkbox.value=='no_checked'){
             alert('개인정보 수집 및 이용에 동의해 주세요');
+            alert_close($msg);
         }
-        
-    }
+        return false; //<- 이 문장으로 새로고침(reload)이 방지됨
+        }
  </script>
 {% endblock link %}
 
@@ -60,6 +61,7 @@
 <div class="container display_none">
     <form action="{% url 'register_action' %}" method="POST">
         {% csrf_token %}
+        
         <div class="row" style="margin-top:5%;">
 
             <div class="col-xs-3 ">
@@ -79,9 +81,10 @@
                             <p>이름</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="name" type="text">
+                            <input name="name" type="text" value="{{inform.user_name}}">
                         </div>
                     </div>
+           
                     <div class="row">
                         <div class="col-xs-4">
                             <p>학년</p>
@@ -162,7 +165,7 @@
         </div>
         <input id="googleID" type="hidden" name="googleID" value="">
         <input id="checkbox_value" type="hidden" name="checkbox_value" value="">
-
+       
     </form>
 </div>
 
