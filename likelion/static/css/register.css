@@ -187,3 +187,9 @@ input:focus{
     outline-offset: 0ch;
     border-color: rgb(102,175,233);
 }
+
+
+/* js */
+.display_none{
+    display: none;
+  }

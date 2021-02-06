@@ -5,84 +5,51 @@
 
 
 {% block title %}
-지원서 작성 
+지원서 작성
 {% endblock title %}
 
 
 
 {% block link %}
-    
-    <script>
-        function onSignIn() {
-            var profile = gauth.currentUser.get().getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-        function checkLoginStatus() {
-            if (gauth.isSignedIn.get()) {
-                var profile = gauth.currentUser.get().getBasicProfile();
-                onSignIn();
-            }
-        }
-        function init() { //들어왔을 때 실행
-            console.log('init');
-            gapi.load('auth2', function () {
-                console.log('auth2');
-                window.gauth = gapi.auth2.init({
-                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-                })
-                gauth.then(function () {
-                    console.log('gooleAuth succes');
-                    checkLoginStatus()
-                }, function () {
-                    console.log('gooleauth fail');
-                });
-            });
-        }
-    </script>
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
-    <script>
-        function onSignIn() {
-            var profile = gauth.currentUser.get().getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-        function checkLoginStatus() {
-            if (gauth.isSignedIn.get()) {
-                var profile = gauth.currentUser.get().getBasicProfile();
-                onSignIn();
-            }
-        }
-        function init() {
-            console.log('init');
-            gapi.load('auth2', function () {
-                console.log('auth2');
-                window.gauth = gapi.auth2.init({
-                    client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-                })
-                gauth.then(function () {
-                    console.log('gooleAuth succes');
-                    checkLoginStatus()
-                }, function () {
-                    console.log('gooleauth fail');
-                });
-            });
-        }
-    </script>
+
+
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<script>
+    const setGoogleID = () => {
+        var profile = gauth.currentUser.get().getBasicProfile();
+        const googleID = document.querySelector('#googleID')
+        googleID.value = profile.getId()
+    }
+
+    const removeContainerNone = () => {
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none")
+    }
+
+    window.onload = function () {
+        gapi.load('auth2', function () {
+            console.log('auth2');
+            window.gauth = gapi.auth2.init({
+                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+            })
+            gauth.then(function () {
+                console.log('gooleAuth succes');
+            }, function () {
+                console.log('gooleauth fail');
+            }).then(removeContainerNone).then(setGoogleID)
+        });
+    }
+</script>
 {% endblock link %}
 
 
 
 {% block content %}
-<div class="container">
-    <form action="{% url 'register_action' %}"  method="POST">
+<div class="container display_none">
+    <form action="{% url 'register_action' %}" method="POST">
         {% csrf_token %}
         <div class="row" style="margin-top:5%;">
-            
+
             <div class="col-xs-3 ">
                 <img class="cutelion" src="{% static 'register_img/likelionimg.png' %}" alt="">
             </div>
@@ -90,7 +57,7 @@
                 <hr class="cuteline">
             </div>
         </div>
-        <div class=first >
+        <div class=first>
             <div class=top>
                 <!--배경이미지 -->
                 <div class=in>
@@ -109,10 +76,10 @@
                         </div>
                         <div class="col-xs-8">
                             <select name="grade" class="grade">
-                            <option value="1">1학년</option>
-                            <option value="2">2학년</option>
-                            <option value="3">3학년</option>
-                            <option value="4">4학년</option>
+                                <option value="1">1학년</option>
+                                <option value="2">2학년</option>
+                                <option value="3">3학년</option>
+                                <option value="4">4학년</option>
                             </select>
                         </div>
                     </div>
@@ -129,14 +96,16 @@
                             <p>학과</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="major" placeholder="정확하게 입력해주세요."type="text">
+                            <input name="major" placeholder="정확하게 입력해주세요." type="text">
                         </div>
                     </div>
-                    <h4 style="margin-top:7%; margin-bottom:1%;"><개인정보 수집 및 이용 동의></h4>
+                    <h4 style="margin-top:7%; margin-bottom:1%;">
+                        <개인정보 수집 및 이용 동의>
+                    </h4>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                         <label class="form-check-label" for="flexCheckChecked">
-                        개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
+                            개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
                         </label>
                     </div>
                 </div>
@@ -144,30 +113,35 @@
         </div>
         <hr style="border: 2px solid #FF9E1B;" width="100%">
         <div class="second">
-            <div class="bottom"> <!--배경이미지 -->
+            <div class="bottom">
+                <!--배경이미지 -->
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <textarea name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                        id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
-                    <p  class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                    <textarea name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
+                    <textarea name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                        id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                    <textarea name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <textarea name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                        id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea name="q4" style="outline: 0 none;" class="form-control texts" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    <textarea name="q4" style="outline: 0 none;" class="form-control texts"
+                        id="exampleFormControlTextarea1" rows="5"></textarea>
                     <br><br><br>
                     <div class="button">
                         <button type="submit" class="hi"><strong>제출하기</strong></button>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
-        
+        <input id="googleID" type="hidden" name="googleID" value="">
     </form>
 </div>
 

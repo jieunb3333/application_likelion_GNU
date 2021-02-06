@@ -16,14 +16,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <script>
 
-    function checkLoginStatus() {
-        if (gauth.isSignedIn.get()) {
-            var profile = gauth.currentUser.get().getBasicProfile();
-        }
-        //로그인 안되었을경우 추가하기 else
+    
+    const removeContainerNone = () => {
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none")
     }
-    function init() {
-        console.log('init');
+
+    window.onload = function () {
         gapi.load('auth2', function () {
             console.log('auth2');
             window.gauth = gapi.auth2.init({
@@ -31,13 +30,11 @@
             })
             gauth.then(function () {
                 console.log('gooleAuth succes');
-                checkLoginStatus()
             }, function () {
                 console.log('gooleauth fail');
-            });
+            }).then(removeContainerNone)
         });
     }
-    
 </script>
 {% endblock link %}
 

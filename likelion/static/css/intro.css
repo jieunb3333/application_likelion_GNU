@@ -13,7 +13,6 @@ body {
   background-size: cover;
   background: url("../intro_image/intro_background.png") no-repeat center/cover
     fixed;
-    
 }
 .container {
   color: white;
@@ -60,6 +59,11 @@ hr {
     font-size: 20px;
     border: none;
 }
+
+#loginBtn {
+  color: white !important;
+}
+
 .inform-box {
   margin-top: 30px;
 }
@@ -160,4 +164,9 @@ hr {
     margin-left: 2vw;
     width: 10vw;
   }
+}
+
+/* js */
+.display_none{
+  display: none;
 }
