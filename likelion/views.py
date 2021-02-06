@@ -34,8 +34,8 @@ def register_action(request):
         request.session["google_id"] = google_id
         return render(request, "register.html",{"inform": inform})
     else:
-        inform = User.objects.filter(user_id=google_id)
         google_id = request.POST["googleID"]
+        inform = User.objects.get(user_id=google_id)  
         inform.user_id = google_id
         inform.user_name = request.POST["name"]
         inform.user_pn = request.POST["phonenumber"]
