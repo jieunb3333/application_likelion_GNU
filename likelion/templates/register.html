@@ -60,10 +60,15 @@
     $(document).ready(function(){
     $("#submit").click(function(){
     const checkbox=document.querySelector('#checkbox');
-    if(checkbox.value=='no_checked'){alert('개인정보 수집 및 이용에 동의해 주세요');$('#checkbox').focus();return false;}
+    if($("#name").val().length==0){alert("이름을 입력해 주세요.");$("#name").focus();return false;}
+    if($("#number").val().length==0){alert("전화번호를 입력해 주세요.");$("#number").focus();return false;}
+    if($("#major").val().length==0){alert("학과를 입력해 주세요.");$("#major").focus();return false;}
+    if(checkbox.value=='no_checked'){alert('개인정보 수집 및 이용에 동의해 주세요');$('#checkbox').focus();return false;}   
     if($("#q1").val().length==0){alert("1번 내용을 입력해 주세요.");$("#q1").focus();return false;}
     if($("#q2").val().length==0){alert("2번 내용을 입력해 주세요.");$("#q2").focus();return false;}
     if($("#q3").val().length==0){alert("3번 내용을 입력해 주세요.");$("#q3").focus();return false;}
+    if($("#q4").val().length==0){alert("4번 내용을 입력해 주세요.");$("#q4").focus();return false;}
+
     });
 });
  </script>
@@ -96,7 +101,7 @@
                             <p>이름</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="name" type="text" value="{{inform.user_name}}">
+                            <input id="name"name="name" type="text" value="{{inform.user_name}}">
                         </div>
                     </div>
            
@@ -105,7 +110,7 @@
                             <p>학년</p>
                         </div>
                         <div class="col-xs-8">
-                            <select name="grade" class="grade" value="{{inform.user_grade}}">
+                            <select id="grade" name="grade" class="grade" value="{{inform.user_grade}}">
                                 <option value="1" {% if inform.user_grade == '1' %}selected{% endif %}>1학년</option>
                                 <option value="2" {% if inform.user_grade == '2' %}selected{% endif %}>2학년</option>
                                 <option value="3" {% if inform.user_grade == '3' %}selected{% endif %}>3학년</option>
@@ -119,7 +124,7 @@
                         </div>
                         <div class="col-xs-8">
 
-                            <input name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input id="number" name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
                         </div>
                     </div>
@@ -128,7 +133,7 @@
                             <p>학과</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="major" placeholder="정확하게 입력해주세요." type="text" value="{{inform.user_major}}">
+                            <input id="major" name="major" placeholder="정확하게 입력해주세요." type="text" value="{{inform.user_major}}">
                         </div>
                     </div>
                     <h4 style="margin-top:7%; margin-bottom:1%;">
@@ -161,21 +166,16 @@
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea minlength="30" id="q1"name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
-
-                        id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q1}}">{{inform.user_q1}}</textarea>
+                    <textarea minlength="30" id="q1"name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts" rows="10" value="{{inform.user_q1}}">{{inform.user_q1}}</textarea>
                     <br><br><br>
                     <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                    <textarea minlength="30" name="q2"id="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
-                        id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q2}}">{{inform.user_q2}}</textarea>
+                    <textarea minlength="30" name="q2"id="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts" rows="10" value="{{inform.user_q2}}">{{inform.user_q2}}</textarea>
                     <br><br><br>
                     <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                    <textarea minlength="30" name="q3"id="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
-                        id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q3}}">{{inform.user_q3}}</textarea>
+                    <textarea minlength="30" name="q3"id="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts" rows="10" value="{{inform.user_q3}}">{{inform.user_q3}}</textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea name="q4" style="outline: 0 none;" class="form-control texts"
-                        id="exampleFormControlTextarea1" rows="5" value="{{inform.user_q4}}">{{inform.user_q4}}</textarea>
+                    <textarea name="q4" id="q4" style="outline: 0 none;" class="form-control texts" rows="5" value="{{inform.user_q4}}">{{inform.user_q4}}</textarea>
                     <br><br><br>
                     <div class="button">
 
