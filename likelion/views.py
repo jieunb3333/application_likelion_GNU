@@ -45,7 +45,6 @@ def check(request):
         google_id = request.POST["googleID"]
 
         inform=User.objects.filter(user_id=google_id)
-        request.session["google_id"] = google_id
         return render(request,'check.html',{'inform':inform})
 
 
