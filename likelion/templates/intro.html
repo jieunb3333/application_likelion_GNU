@@ -40,9 +40,8 @@
                             url : "{% url 'register_check' %}",
                             data : { 'user_email': currentuser_email, 'user_id':currentuser_id ,csrfmiddlewaretoken: '{{ csrf_token }}' },
                             success: function (data) {
-                                //this gets called when server returns an OK response
                                 alert("it worked!");
-                                window.location.href = 'http://localhost:8000/register_check/'
+                                window.location.href = '{% url "register_check" %}'
                             },
                             error: function (data) {
                                 alert("it didnt work");

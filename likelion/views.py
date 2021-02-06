@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import User
 
 # Create your views here.
@@ -38,20 +39,21 @@ def register_action(request):
 
 def register_check(request):
     google_id = request.session["google_id"]
+    # user_email = request.POST.get('user_email')
+    # user_id = request.POST.get('user_id')
     inform = User.objects.filter(user_id=google_id)
-    print(google_id)
+    # print(user_id)
     if request.is_ajax():
         print("hihi")
         user_email = request.POST.get('user_email')
         user_id = request.POST.get('user_id')
         print(user_id)
-        print(user_email)
         if User.objects.filter(user_id=user_id).exists():
             print(user_email)
-            return redirect("/register_check")
+            return HttpResponse("안녕하세요")
         else:
             print("존재하지 않음. 지원서 처음 작성")
-            return redirect("/register")
+            return HttpResponse("잘가세요")
     return render(request, "register_check.html", {"inform": inform})
 
 
