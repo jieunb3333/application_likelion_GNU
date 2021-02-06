@@ -91,10 +91,10 @@
                         </div>
                         <div class="col-xs-8">
                             <select name="grade" class="grade" value="{{inform.user_grade}}">
-                                <option value="1">1학년</option>
-                                <option value="2">2학년</option>
-                                <option value="3">3학년</option>
-                                <option value="4">4학년</option>
+                                <option value="1" {% if inform.user_grade == '1' %}selected{% endif %}>1학년</option>
+                                <option value="2" {% if inform.user_grade == '2' %}selected{% endif %}>2학년</option>
+                                <option value="3" {% if inform.user_grade == '3' %}selected{% endif %}>3학년</option>
+                                <option value="4" {% if inform.user_grade == '4' %}selected{% endif %}>4학년</option>
                             </select>
                         </div>
                     </div>
@@ -124,7 +124,12 @@
                         </label>
                         <script>
                            $('#checkbox').on('click', function(event){
-                            this.value = 'checked'
+                               if(this.value=='no_checked'){
+                                this.value = 'checked'   
+                               } else{
+                                this.value = 'no_checked'
+                               }
+                            
                             //alert(this)
                             })
                         </script>

@@ -18,9 +18,11 @@ def register(request):
 
 def register_action(request):
     checkbox_value=request.POST["checkbox_value"]
+    google_id = request.POST["googleID"]
     if checkbox_value =='no_checked':
-        inform = User()
-        google_id = request.POST["googleID"]
+        if User.objects.filter(user_id=google_id).exists()==True:
+            inform = User.objects.get(user_id=google_id)
+        else: inform = User()
         inform.user_id = google_id
         inform.user_name = request.POST["name"]
         inform.user_pn = request.POST["phonenumber"]
@@ -34,8 +36,9 @@ def register_action(request):
         request.session["google_id"] = google_id
         return render(request, "register.html",{"inform": inform})
     else:
-        google_id = request.POST["googleID"]
-        inform = User.objects.get(user_id=google_id)  
+        if User.objects.filter(user_id=google_id).exists()==True:
+            inform = User.objects.get(user_id=google_id)
+        else: inform = User() 
         inform.user_id = google_id
         inform.user_name = request.POST["name"]
         inform.user_pn = request.POST["phonenumber"]
