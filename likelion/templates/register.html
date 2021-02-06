@@ -14,39 +14,13 @@
 
 
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
-<script>
-    const setGoogleID = () => {
-        var profile = gauth.currentUser.get().getBasicProfile();
-        const googleID = document.querySelector('#googleID')
-        googleID.value = profile.getId()
-    }
-    
 
-    const removeContainerNone = () => {
-        const container = document.querySelector('.container');
-        container.classList.remove("display_none")
-    }
-
-    window.onload = function () {
-        gapi.load('auth2', function () {
-            console.log('auth2');
-            window.gauth = gapi.auth2.init({
-                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-            })
-            gauth.then(function () {
-                console.log('gooleAuth succes');
-            }, function () {
-                console.log('gooleauth fail');
-            }).then(removeContainerNone).then(setGoogleID)
-        });
-    }
-</script>
 <script>
-    function check_button(){
-        const checkbox=document.querySelector('#checkbox');
-        const checkbox_value=document.querySelector('#checkbox_value');
-        checkbox_value.value=checkbox.value;
-        if(checkbox.value === 'no_checked'){
+    function check_button() {
+        const checkbox = document.querySelector('#checkbox');
+        const checkbox_value = document.querySelector('#checkbox_value');
+        checkbox_value.value = checkbox.value;
+        if (checkbox.value === 'no_checked') {
             alert('개인정보 수집 및 이용에 동의해 주세요');
             return false;
         }
@@ -55,13 +29,13 @@
             document.forms[0].action = url;
         }
     }
- </script>
+</script>
 {% endblock link %}
 
 <!-- {% url 'register_action' %} -->
 
 {% block content %}
-<div class="container display_none">
+<div class="container">
     <form method="POST" action="#">
         {% csrf_token %}
         <div class="row" style="margin-top:5%;">
@@ -118,15 +92,16 @@
                     <h4 style="margin-top:7%; margin-bottom:1%;">
                         <개인정보 수집 및 이용 동의>
                     </h4>
-                    <div id="check"class="form-check">
-                        <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox" name="checkbox" >
+                    <div id="check" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox"
+                            name="checkbox">
                         <label class="form-check-label" for="flexCheckChecked">
                             개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
                         </label>
                         <script>
-                           $('#checkbox').on('click', function(event){
-                            this.value = 'checked'
-                            //alert(this)
+                            $('#checkbox').on('click', function (event) {
+                                this.value = 'checked'
+                                //alert(this)
                             })
                         </script>
                     </div>
@@ -152,19 +127,19 @@
                         id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea  name="q4" style="outline: 0 none;" class="form-control texts"
+                    <textarea name="q4" style="outline: 0 none;" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="5"></textarea>
                     <br><br><br>
                     <div class="button">
-                        <button type="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
-                        
+                        <button type="submit" onclick="check_button()" class="hi"
+                            name="submit"><strong>제출하기</strong></button>
+
                     </div>
 
                 </div>
             </div>
 
         </div>
-        <input id="googleID" type="hidden" name="googleID" value="">
         <input id="checkbox_value" type="hidden" name="checkbox_value" value="">
 
     </form>

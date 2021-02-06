@@ -5,102 +5,103 @@
 
 
 {% block title %}
-지원서 작성 
+지원서 작성
 {% endblock title %}
 
 
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/view.css' %}">
+<link rel="stylesheet" href="{% static 'css/view.css' %}">
 {% endblock link %}
 
 
 
 {% block content %}
 <div class="container">
-    <form action="{% url 'intro' %}"  method="POST">
-        {% for inform in inform %}
-            {% csrf_token %}
-            <div class="row" style="margin-top:5%;">
-                
-                <div class="col-xs-3 ">
-                    <img class="cutelion" src="{% static 'register_img/likelionimg.png' %}" alt="">
-                </div>
-                <div class="col-xs-9">
-                    <hr class="cuteline">
-                </div>
+    <form action="{% url 'intro' %}" method="POST">
+        {% csrf_token %}
+        <div class="row" style="margin-top:5%;">
+
+            <div class="col-xs-3 ">
+                <img class="cutelion" src="{% static 'register_img/likelionimg.png' %}" alt="">
             </div>
-            <div class=first >
-                <div class=top>
-                    <!--배경이미지 -->
-                    <div class=in>
-                        <p class="pi"><strong>개인정보</strong></p>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <p>이름</p>
-                            </div>
-                            <div class="col-xs-8">
-                                <p>{{inform.user_name}}</p>
-                            </div>
+            <div class="col-xs-9">
+                <hr class="cuteline">
+            </div>
+        </div>
+        <div class=first>
+            <div class=top>
+                <!--배경이미지 -->
+                <div class=in>
+                    <p class="pi"><strong>개인정보</strong></p>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>이름</p>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <p>학년</p>
-                            </div>
-                            <div class="col-xs-8">
-                                <p>{{inform.user_grade}}</p>
-                            </div>
+                        <div class="col-xs-8">
+                            <p>{{inform.user_name}}</p>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <p>전화번호</p>
-                            </div>
-                            <div class="col-xs-8">
-                                <p>{{inform.user_pn}}</p>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>학년</p>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <p>학과</p>
-                            </div>
-                            <div class="col-xs-8">
-                                <p>{{inform.user_major}}</p>
-                            </div>
+                        <div class="col-xs-8">
+                            <p>{{inform.user_grade}}</p>
                         </div>
-        
-                        <h4 style="margin-top:7%; margin-bottom:1%;"><개인정보 수집 및 이용 동의></h4>
-                        <div class="form-check">
-                            <label class="form-check-label" for="flexCheckChecked">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>전화번호</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p>{{inform.user_pn}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>학과</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p>{{inform.user_major}}</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top:7%; margin-bottom:1%;">
+                        <개인정보 수집 및 이용 동의>
+                    </h4>
+                    <div class="form-check">
+                        <label class="form-check-label" for="flexCheckChecked">
                             개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
-                            </label>
-                        </div>
+                        </label>
                     </div>
                 </div>
             </div>
-            <hr style="border: 2px solid #FF9E1B;" width="100%">
-            <div class="second">
-                <div class="bottom"> <!--배경이미지 -->
-                    <div class="out">
-                        <br><br><br>
-                        <p class="q">1. 지원동기가 어떻게되나요?</p>
-                        <p class="ans">{{inform.user_q1}}</p>
-                        <p  class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                        <p class="ans">{{inform.user_q2}}</p>
-                        <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                        <p class="ans">{{inform.user_q3}}</p>
-                        <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                        <p class="ans">{{inform.user_q4}}</p>
-                        <br><br><br>
-                        <div class="button">
-                            <button type="submit" class="hi"><strong>메인 페이지</strong></button>
-                        </div>
-                        
-                        
+        </div>
+        <hr style="border: 2px solid #FF9E1B;" width="100%">
+        <div class="second">
+            <div class="bottom">
+                <!--배경이미지 -->
+                <div class="out">
+                    <br><br><br>
+                    <p class="q">1. 지원동기가 어떻게되나요?</p>
+                    <p class="ans">{{inform.user_q1}}</p>
+                    <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
+                    <p class="ans">{{inform.user_q2}}</p>
+                    <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
+                    <p class="ans">{{inform.user_q3}}</p>
+                    <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
+                    <p class="ans">{{inform.user_q4}}</p>
+                    <br><br><br>
+                    <div class="button">
+                        <button type="submit" class="hi"><strong>메인 페이지</strong></button>
                     </div>
+
+
                 </div>
-                
             </div>
-        {% endfor %}    
+
+        </div>
     </form>
 </div>
 {% endblock content %}

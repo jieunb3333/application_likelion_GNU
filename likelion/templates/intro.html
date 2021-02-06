@@ -32,24 +32,22 @@
                 clickRegisterBtn = () => {  // 로그인이 되어있을 때
                     if (true) {     // 이미 지원서를 작성했을 경우
                         var profile = gauth.currentUser.get().getBasicProfile();
-                        var currentuser_email = profile.getEmail();
                         var currentuser_id = profile.getId();
-                        console.log(currentuser_email);
                         $.ajax({
-                            method : 'POST',
-                            url : "{% url 'register_check' %}",
-                            data : { 'user_email': currentuser_email, 'user_id':currentuser_id ,csrfmiddlewaretoken: '{{ csrf_token }}' },
+                            method: 'POST',
+                            url: "{% url 'login_ajax' %}",
+                            data: { 'user_id': currentuser_id, csrfmiddlewaretoken: '{{ csrf_token }}' },
                             success: function (data) {
                                 alert("it worked!");
-                                window.location.href = '{% url "register_check" %}'
+                                window.location.href = '{% url "register" %}'
                             },
                             error: function (data) {
                                 alert("it didnt work");
-                            } 
+                            }
                         });
                     }
                     else {  // 지원서를 처음 작성하는 경우
-                        
+
                     }
                 }
             }, function () {

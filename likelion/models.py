@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
-    user_id=models.CharField(max_length=10)
+class Inform(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='informs', primary_key=True)
     user_name=models.CharField(max_length=30)
     user_grade=models.IntegerField(null=True)
     user_pn=models.CharField(max_length=11)
