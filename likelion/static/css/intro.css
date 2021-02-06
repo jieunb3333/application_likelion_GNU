@@ -22,6 +22,21 @@ body {
   margin-right: auto;
   text-align: center;
 }
+.msg {
+  position: fixed;
+  width: 370px;
+  height: 100px;
+  top: 3px;
+  left: calc(50% - 185px);
+  padding: 38px 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ff921b;
+  background-color: rgba(41, 42, 45);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
 .likelion-logo {
   margin-top: 90px;
   width: 290px;
@@ -131,6 +146,11 @@ hr {
   hr {
     width: 85vw;
     margin-top: 4.5vh;
+  }
+  .msg {
+    width: 300px;
+    left: calc(50% - 150px);
+    font-size: 12px;
   }
   .likelion-logo {
     margin-top: 9vh;

@@ -71,6 +71,13 @@
 
 {% block content %}
 <div class="container display_none">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <div class="row">
         <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
     </div>
@@ -109,5 +116,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    setTimeout(function() {
+        if($('.msg').length > 0) {
+            $('.msg').remove();
+        }
+    }, 2500)
+</script>
 {% endblock content %}

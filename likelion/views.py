@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from django.shortcuts import render, redirect, reverse, Http404
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -28,7 +29,11 @@ def view(request):
 
 
 def register(request):
-    return render(request, "register.html")
+    if request.user.is_authenticated:
+        return render(request, "register.html")
+    else:
+        messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
+        return redirect('intro')
 
 
 def register_action(request):
