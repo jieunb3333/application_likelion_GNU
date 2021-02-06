@@ -20,6 +20,7 @@
         const googleID = document.querySelector('#googleID')
         googleID.value = profile.getId()
     }
+    
 
     const removeContainerNone = () => {
         const container = document.querySelector('.container');
@@ -40,6 +41,17 @@
         });
     }
 </script>
+<script>
+    function check_button(){
+        const checkbox=document.querySelector('#checkbox');
+        const checkbox_value=document.querySelector('#checkbox_value');
+        checkbox_value.value=checkbox.value;
+        if(checkbox.value=='no_checked'){
+            alert('개인정보 수집 및 이용에 동의해 주세요');
+        }
+        
+    }
+ </script>
 {% endblock link %}
 
 
@@ -102,11 +114,17 @@
                     <h4 style="margin-top:7%; margin-bottom:1%;">
                         <개인정보 수집 및 이용 동의>
                     </h4>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <div id="check"class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox" name="checkbox" >
                         <label class="form-check-label" for="flexCheckChecked">
                             개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
                         </label>
+                        <script>
+                           $('#checkbox').on('click', function(event){
+                            this.value = 'checked'
+                            //alert(this)
+                            })
+                        </script>
                     </div>
                 </div>
             </div>
@@ -118,23 +136,24 @@
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength=30 name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                    <textarea name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength="30" name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                    <textarea name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength="30" name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10"></textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea name="q4" style="outline: 0 none;" class="form-control texts"
+                    <textarea  name="q4" style="outline: 0 none;" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="5"></textarea>
                     <br><br><br>
                     <div class="button">
-                        <button type="submit" class="hi"><strong>제출하기</strong></button>
+                        <button type="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
+                        
                     </div>
 
                 </div>
@@ -142,6 +161,8 @@
 
         </div>
         <input id="googleID" type="hidden" name="googleID" value="">
+        <input id="checkbox_value" type="hidden" name="checkbox_value" value="">
+
     </form>
 </div>
 

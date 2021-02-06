@@ -12,7 +12,7 @@ class User(models.Model):
     user_q3=models.TextField()
     user_q4=models.TextField()
     # user_pass=models.CharField(max_length=10)
-    def __str__(self):
-        return self.user_name + self.user_major
+    # def __str__(self):
+    #     return self.user_name + self.user_major
 
     
