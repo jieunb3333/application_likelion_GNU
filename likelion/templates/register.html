@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script>
     const setGoogleID = () => {
         var profile = gauth.currentUser.get().getBasicProfile();
@@ -51,8 +52,20 @@
             alert_close($msg);
         }
         return false; //<- 이 문장으로 새로고침(reload)이 방지됨
+   
         }
  </script>
+
+ <script>
+    $(document).ready(function(){
+    $("#submit").click(function(){
+    if($("#q1").val().length==0){alert("1번 내용을 입력해 주세요.");$("#q1").focus();return false;}
+    if($("#q2").val().length==0){alert("2번 내용을 입력해 주세요.");$("#q2").focus();return false;}
+    if($("#q3").val().length==0){alert("3번 내용을 입력해 주세요.");$("#q3").focus();return false;}
+    });
+});
+ </script>
+
 {% endblock link %}
 
 
@@ -103,7 +116,7 @@
                             <p>전화번호</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}">
+                            <input name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}" >
                         </div>
                     </div>
                     <div class="row">
@@ -120,7 +133,7 @@
                     <div id="check"class="form-check">
                         <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox" name="checkbox" >
                         <label class="form-check-label" for="flexCheckChecked">
-                            개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 폐기됩니다.
+                            개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 <span style="color:red;">폐기</span>됩니다.
                         </label>
                         <script>
                            $('#checkbox').on('click', function(event){
@@ -144,23 +157,23 @@
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea minlength=30 name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength=30 name="q1" id="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q1}}">{{inform.user_q1}}</textarea>
                     <br><br><br>
                     <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
-                    <textarea minlength="30" name="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength="30" name="q2"id="q2" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q2}}">{{inform.user_q2}}</textarea>
                     <br><br><br>
                     <p class="q">3. 만들고 싶은 웹서비스에 대해 간단히 설명해 주세요.</p>
-                    <textarea minlength="30" name="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength="30" name="q3"id="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q3}}">{{inform.user_q3}}</textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
-                    <textarea  name="q4" style="outline: 0 none;" class="form-control texts"
+                    <textarea name="q4" style="outline: 0 none;" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="5" value="{{inform.user_q4}}">{{inform.user_q4}}</textarea>
                     <br><br><br>
                     <div class="button">
-                        <button type="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
+                        <button type="submit"id="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
                         
                     </div>
 
