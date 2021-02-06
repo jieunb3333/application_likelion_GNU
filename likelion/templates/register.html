@@ -11,9 +11,10 @@
 
 
 {% block link %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
 <script>
     const setGoogleID = () => {
         var profile = gauth.currentUser.get().getBasicProfile();
@@ -41,17 +42,30 @@
         });
     }
 </script>
-<script>
+<!-- <script>
     function check_button(){
         const checkbox=document.querySelector('#checkbox');
         const checkbox_value=document.querySelector('#checkbox_value');
         checkbox_value.value=checkbox.value;
-        if(checkbox.value=='no_checked'){
-            alert('개인정보 수집 및 이용에 동의해 주세요');
-            alert_close($msg);
+        var count=document.form_name.q1.value.length;
+        
+        if (count ==0){
+            alert('30자 이상 입력해 주세요');
+            $('#q1').focus();
+            return false;
         }
-        return false; //<- 이 문장으로 새로고침(reload)이 방지됨
         }
+ </script> -->
+ <script>
+    $(document).ready(function(){
+    $("#submit").click(function(){
+    const checkbox=document.querySelector('#checkbox');
+    if(checkbox.value=='no_checked'){alert('개인정보 수집 및 이용에 동의해 주세요');$('#checkbox').focus();return false;}
+    if($("#q1").val().length==0){alert("1번 내용을 입력해 주세요.");$("#q1").focus();return false;}
+    if($("#q2").val().length==0){alert("2번 내용을 입력해 주세요.");$("#q2").focus();return false;}
+    if($("#q3").val().length==0){alert("3번 내용을 입력해 주세요.");$("#q3").focus();return false;}
+    });
+});
  </script>
 {% endblock link %}
 
@@ -59,7 +73,7 @@
 
 {% block content %}
 <div class="container display_none">
-    <form action="{% url 'register_action' %}" method="POST">
+    <form name="form_name" action="{% url 'register_action' %}" method="POST">
         {% csrf_token %}
         
         <div class="row" style="margin-top:5%;">
@@ -103,7 +117,7 @@
                             <p>전화번호</p>
                         </div>
                         <div class="col-xs-8">
-                            <input name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}">
+                            <input name="phonenumber" type="text" placeholder="- 제외하고 입력" value="{{inform.user_pn}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </div>
                     </div>
                     <div class="row">
@@ -144,7 +158,7 @@
                 <div class="out">
                     <br><br><br>
                     <p class="q">1. 지원동기가 어떻게되나요?</p>
-                    <textarea minlength=30 name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
+                    <textarea minlength="30" id="q1"name="q1" placeholder="30자 이상 입력해 주세요" class="form-control texts"
                         id="exampleFormControlTextarea1" rows="10" value="{{inform.user_q1}}">{{inform.user_q1}}</textarea>
                     <br><br><br>
                     <p class="q">2. 동아리에 들어온다면 해 보고 싶은 활동을 적어주세요</p>
@@ -160,7 +174,7 @@
                         id="exampleFormControlTextarea1" rows="5" value="{{inform.user_q4}}">{{inform.user_q4}}</textarea>
                     <br><br><br>
                     <div class="button">
-                        <button type="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
+                        <button id="submit" type="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
                         
                     </div>
 
