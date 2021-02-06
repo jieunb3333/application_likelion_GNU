@@ -3,6 +3,15 @@ from .models import User
 
 # Create your views here.
 def intro(request):
+    if request.is_ajax():
+        print("hihi")
+        user_id = request.POST['user_id']
+        if User.objects.filter(user_id=user_id).exists():
+            print("존재함")
+            return redirect("/register_check")
+        else:
+            print("존재하지 않음. 지원서 처음 작성")
+            return redirect("/register")
     return render(request, "intro.html")
 
 

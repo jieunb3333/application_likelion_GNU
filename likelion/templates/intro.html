@@ -30,7 +30,22 @@
             gauth.then(function () {
                 console.log('gooleAuth success');
                 clickRegisterBtn = () => {
-                    window.location.href = 'http://localhost:8000/register/'
+                    //window.location.href = 'http://localhost:8000/register/' 
+
+                    var profile = gauth.currentUser.get().getBasicProfile();
+                    var currentuser_id = profile.getId();
+                    $.ajax({
+                        method : 'POST',
+                        url : "{% url 'intro' %}",
+                        data : { 'user_id': currentuser_id, csrfmiddlewaretoken: '{{ csrf_token }}' },
+                        success: function (data) {
+                            //this gets called when server returns an OK response
+                            alert("it worked!");
+                        },
+                        error: function (data) {
+                            alert("it didnt work");
+                       }
+                    });
                 }
             }, function () {
                 console.log('gooleauth fail');
