@@ -27,7 +27,7 @@ SECRET_KEY = 'e15bv&$kbq$*zss^y3v0mr88o3ro9#0*$(!th36^4wb1u-$1t='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','application-likelion-gnu.herokuapp.com']
 
 
 # Application definition
