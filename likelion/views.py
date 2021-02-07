@@ -4,24 +4,32 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .models import Inform
+import requests
 
 # Create your views here.
 def intro(request):
     return render(request, "intro.html")
 
-def login_ajax(request):
-    if request.POST:
-        user_id = request.POST.get('user_id')
-        
-        try:
-            user = User.objects.get(username=user_id)
-        except User.DoesNotExist:
-            user = User.objects.create(username=user_id)
-            user.set_unusable_password()
-            user.save()
+def login_action(request):
+    token = request.GET.get('token')
+    r = requests.get('https://oauth2.googleapis.com/tokeninfo?id_token='+token)
+    #curl로 token을 user_id로 만들기
+    user_id = r.json()['sub']
 
-        login(request, user)
-        return redirect(reverse('register'))
+    try:
+        user = User.objects.get(username=user_id)
+    except User.DoesNotExist:
+        user = User.objects.create(username=user_id)
+        user.set_unusable_password()
+        user.save()
+
+    login(request, user)
+
+    # if informs에 내가 작성한게 있으면 
+    if Inform.objects.filter(user__username=user_id).exists():
+        return redirect('/register_check')
+    else:
+        return redirect('/register')
 
 
 def view(request):
@@ -29,8 +37,15 @@ def view(request):
 
 
 def register(request):
+    #구글에 방금 받은 토큰에 대해서 물어보기
+    #curl 이용
+    
     if request.user.is_authenticated:
-        return render(request, "register.html")
+        if Inform.objects.filter(user__username=request.user).exists():
+            return redirect('/register_check')
+        else:
+            return render(request, "register.html")
+        
     else:
         messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
         return redirect('intro')
@@ -60,8 +75,16 @@ def register_action(request):
 
 def register_check(request):
     print(request.user)
-    inform = request.user.informs
-    return render(request, "register_check.html", {"inform": inform})
+    if request.user.is_authenticated:
+        if Inform.objects.filter(user__username=request.user).exists():
+            inform = request.user.informs
+            return render(request, "register_check.html", {"inform": inform})
+        else:
+            return redirect('/register')
+    else:
+        messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
+        return redirect('intro')
+    
 
 
 def check(request):

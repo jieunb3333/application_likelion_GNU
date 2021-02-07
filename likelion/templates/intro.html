@@ -14,7 +14,7 @@
 
 
 <script>
-    let clickRegisterBtn;
+    /*let clickRegisterBtn;
 
     const removeContainerNone = () => {
         const container = document.querySelector('.container');
@@ -33,9 +33,10 @@
                     if (true) {     // 이미 지원서를 작성했을 경우
                         var profile = gauth.currentUser.get().getBasicProfile();
                         var currentuser_id = profile.getId();
+                        console.log(profile.getId());
                         $.ajax({
                             method: 'POST',
-                            url: "{% url 'login_ajax' %}",
+                            url: "% url 'login_ajax' %}",
                             data: { 'user_id': currentuser_id, csrfmiddlewaretoken: '{{ csrf_token }}' },
                             success: function (data) {
                                 alert("it worked!");
@@ -60,6 +61,26 @@
             }).then(removeContainerNone)
         });
 
+    }*/
+
+    window.onload = function(){
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none");
+
+    
+        gapi.load('auth2', function () {
+            window.gauth = gapi.auth2.init({
+                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+            })  
+        });  
+    };
+
+    function clickRegisterBtn(){
+        gauth.signIn().then(function (param1) {
+            console.log(param1);
+
+            window.location.href = 'http://localhost:8000/login_action/?token=' + param1.uc.id_token;
+        });
     }
 
 
