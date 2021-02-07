@@ -30,14 +30,14 @@
         gauth.signIn().then(function (param1) {
             console.log(param1);
 
-            window.location.href = 'http://localhost:8000/login_action/?token=' + param1.uc.id_token;
+            window.location.href = 'http://application-likelion-gnu.herokuapp.com/login_action/?token=' + param1.uc.id_token;
         });
     }
     function clickPassBtn(){
         gauth.signIn().then(function (param1) {
             console.log(param1);
 
-            window.location.href = 'http://localhost:8000/check_action/?token=' + param1.uc.id_token;
+            window.location.href = 'http://application-likelion-gnu.herokuapp.com/check_action/?token=' + param1.uc.id_token;
         });
     }
 
