@@ -14,51 +14,24 @@
 
 
 <script>
-    let clickRegisterBtn,clickPassBtn;
-
-    const setGoogleID = () => {
-        var profile = gauth.currentUser.get().getBasicProfile();
-        const googleID = document.querySelector('#googleID')
-        googleID.value = profile.getId()
-    }
-
-
-    const removeContainerNone = () => {
+    window.onload = function(){
         const container = document.querySelector('.container');
-        container.classList.remove("display_none")
-    }
-    window.onload = function () {
-        console.log('init');
+        container.classList.remove("display_none");
+
+    
         gapi.load('auth2', function () {
-            console.log('auth2');
             window.gauth = gapi.auth2.init({
                 client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-            })
-            gauth.then(function () {
-                console.log('gooleAuth success');
-                clickRegisterBtn = () => {
-                    window.location.href = 'http://localhost:8000/register/'
-                };
-                clickPassBtn = () => {
-                    window.location.href = 'http://localhost:8000/check/'
-                };
-                
-            }, function () {
-                console.log('gooleauth fail');
+            })  
+        });  
+    };
 
-                clickRegisterBtn = () => {
-                    gauth.signIn().then(function () {
-                        window.location.href = 'http://localhost:8000/register/'
-                    });
-                }
-                clickPassBtn = () => {
-                    gauth.signIn().then(function () {
-                        window.location.href = 'http://localhost:8000/check/'
-                    });
-                }
-            }).then(removeContainerNone).then(setGoogleID)
+    function clickRegisterBtn(){
+        gauth.signIn().then(function (param1) {
+            console.log(param1);
+
+            window.location.href = 'http://localhost:8000/login_action/?token=' + param1.uc.id_token;
         });
-
     }
 
 
@@ -70,6 +43,13 @@
 
 {% block content %}
 <div class="container display_none">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <div class="row">
         <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
     </div>
@@ -121,5 +101,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    setTimeout(function() {
+        if($('.msg').length > 0) {
+            $('.msg').remove();
+        }
+    }, 2500)
+</script>
 {% endblock content %}

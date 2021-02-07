@@ -20,6 +20,7 @@ from likelion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.intro ,name='intro'),
+    path('login_action/', views.login_action ,name='login_action'),
     path('register/', views.register, name='register'),
     path('register_action/', views.register_action, name='register_action'),
     path('view/', views.view, name='view'),

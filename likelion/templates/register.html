@@ -15,6 +15,7 @@
 
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
+
 <script>
     const setGoogleID = () => {
         var profile = gauth.currentUser.get().getBasicProfile();
@@ -73,13 +74,17 @@
 });
  </script>
 
+
+
 {% endblock link %}
 
-
+<!-- {% url 'register_action' %} -->
 
 {% block content %}
+
 <div class="container display_none">
     <form name="form_name" action="{% url 'register_action' %}" method="POST">
+
         {% csrf_token %}
         
         <div class="row" style="margin-top:5%;">
@@ -141,12 +146,14 @@
                     <h4 style="margin-top:7%; margin-bottom:1%;">
                         <개인정보 수집 및 이용 동의>
                     </h4>
-                    <div id="check"class="form-check">
-                        <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox" name="checkbox" >
+                    <div id="check" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="no_checked" id="checkbox"
+                            name="checkbox">
                         <label class="form-check-label" for="flexCheckChecked">
                             개인정보는 합불 통보를 위해서만 사용되며, 모집 이후 <span style="color:red;">폐기</span>됩니다.
                         </label>
                         <script>
+
                            $('#checkbox').on('click', function(event){
                                if(this.value=='no_checked'){
                                 this.value = 'checked'   
@@ -155,6 +162,7 @@
                                }
                             
                             //alert(this)
+
                             })
                         </script>
                     </div>
@@ -177,6 +185,7 @@
                     <textarea minlength="30" name="q3"id="q3" placeholder="30자 이상 입력해 주세요" class="form-control texts" rows="10" value="{{inform.user_q3}}">{{inform.user_q3}}</textarea>
                     <br><br><br>
                     <p class="q">4. 우리 동아리를 알게된 경로가 어떻게 되나요?</p>
+
                     <textarea name="q4" id="q4" style="outline: 0 none;" class="form-control texts" rows="5" value="{{inform.user_q4}}">{{inform.user_q4}}</textarea>
                     <br><br><br>
                     <div class="button">
@@ -184,13 +193,13 @@
                         <button type="submit"id="submit" onclick="check_button()" class="hi" name="submit"><strong>제출하기</strong></button>
 
                         
+
                     </div>
 
                 </div>
             </div>
 
         </div>
-        <input id="googleID" type="hidden" name="googleID" value="">
         <input id="checkbox_value" type="hidden" name="checkbox_value" value="">
        
     </form>
