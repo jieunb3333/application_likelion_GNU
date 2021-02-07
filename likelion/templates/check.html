@@ -44,8 +44,6 @@
 
 <div class="container-fluid">
     <img class="logo" src="{% static 'check_img\logo.png' %}" alt="My image">
-    {% for inform in inform %}
-    {% csrf_token %}
 
     <input type="hidden" value={{inform.user_pass}} id="user_pass">
 
@@ -83,8 +81,6 @@
             <strong style="color: rgb(128, 193, 255);"> facebook : </strong><a href="https://www.facebook.com/likeliongnu/"> https://www.facebook.com/likeliongnu/ </a>
     </div>
 
-    {% endfor %}
-    
 
 </div>
 <script>

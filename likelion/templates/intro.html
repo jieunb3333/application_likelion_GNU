@@ -33,6 +33,14 @@
             window.location.href = 'http://localhost:8000/login_action/?token=' + param1.uc.id_token;
         });
     }
+    function clickPassBtn(){
+        gauth.signIn().then(function (param1) {
+            console.log(param1);
+
+            window.location.href = 'http://localhost:8000/check_action/?token=' + param1.uc.id_token;
+        });
+    }
+
 
 
 </script>
@@ -64,14 +72,7 @@
             <br><br>
                 
             <!--추가 -->
-            <form action="{% url 'check' %}" method="post">
-                {% csrf_token %}
-                <input id="googleID" type="hidden" name="googleID" value="">
-
-                <strong><input type="submit" id="passBtn" class="orange" value="합불확인"
-                onclick="clickPassBtn()"></strong>
-
-            </form>    
+        <button type="button" id="passBtn" class="orange" onclick="clickPassBtn()"><strong>합불확인</strong></button>
             <!--추가 -->
     </div>
     <div class="row inform-box">

@@ -33,6 +33,30 @@ def login_action(request):
     else:
         return redirect('/register')
 
+def check_action(request):
+    token = request.GET.get('token')
+    r = requests.get('https://oauth2.googleapis.com/tokeninfo?id_token='+token)
+    #curl로 token을 user_id로 만들기
+    user_id = r.json()['sub']
+    print(user_id)
+
+    try:
+        user = User.objects.get(username=user_id)
+    except User.DoesNotExist:
+        user = User.objects.create(username=user_id)
+        user.set_unusable_password()
+        user.save()
+
+    login(request, user)
+
+
+    #if informs에 내가 작성한게 있으면 
+    if Inform.objects.filter(user__username=user_id).exists():
+        return redirect('/check')
+    else:
+        messages.add_message(request, messages.ERROR, 'ERROR')
+        return redirect('/')
+
 
 def view(request):
     return render(request, "view.html")
@@ -97,21 +121,17 @@ def register_check(request):
 
 
 def check(request):
-    try:
-        google_id = request.POST["googleID"]
+    print(request.user)
+    if request.user.is_authenticated:
+        if Inform.objects.filter(user__username=request.user).exists():
+            inform = request.user.informs
+            return render(request, 'check.html', {"inform": inform})
+        else:
+            return redirect('/register')
+    else:
+        messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
+        return redirect('intro')
 
-        inform=User.objects.filter(user_id=google_id)
-        return render(request,'check.html',{'inform':inform})
-
-
-
-# 예외처리 : googleID못 불러오거나 로그인 안되어 있을 때 intro로 이동    
-    except KeyError:
-        return redirect("/")
-    except ValueError:
-        return redirect("/")
-    
-    
 
 
 
