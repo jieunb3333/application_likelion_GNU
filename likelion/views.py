@@ -79,7 +79,7 @@ def register(request):
         
     else:
         messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
-        return redirect('intro')
+        return redirect('/')
 
 
 
@@ -115,7 +115,7 @@ def register_check(request):
             return redirect('/register')
     else:
         messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
-        return redirect('intro')
+        return redirect('/')
     
 
 
@@ -130,7 +130,7 @@ def check(request):
             return redirect('/register')
     else:
         messages.add_message(request, messages.ERROR, '잘못된 접근입니다. 로그인 후 이용해주세요')
-        return redirect('intro')
+        return redirect('/')
 
 
 
