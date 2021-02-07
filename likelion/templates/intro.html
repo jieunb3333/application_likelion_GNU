@@ -14,55 +14,6 @@
 
 
 <script>
-    /*let clickRegisterBtn;
-
-    const removeContainerNone = () => {
-        const container = document.querySelector('.container');
-        container.classList.remove("display_none")
-    }
-    window.onload = function () {   // 페이지를 실행할 때 바로 작동되는 함수
-        console.log('init');
-        gapi.load('auth2', function () {
-            console.log('auth2');
-            window.gauth = gapi.auth2.init({
-                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
-            })
-            gauth.then(function () {
-                console.log('gooleAuth success');
-                clickRegisterBtn = () => {  // 로그인이 되어있을 때
-                    if (true) {     // 이미 지원서를 작성했을 경우
-                        var profile = gauth.currentUser.get().getBasicProfile();
-                        var currentuser_id = profile.getId();
-                        console.log(profile.getId());
-                        $.ajax({
-                            method: 'POST',
-                            url: "% url 'login_ajax' %}",
-                            data: { 'user_id': currentuser_id, csrfmiddlewaretoken: '{{ csrf_token }}' },
-                            success: function (data) {
-                                alert("it worked!");
-                                window.location.href = '{% url "register" %}'
-                            },
-                            error: function (data) {
-                                alert("it didnt work");
-                            }
-                        });
-                    }
-                    else {  // 지원서를 처음 작성하는 경우
-
-                    }
-                }
-            }, function () {
-                console.log('gooleauth fail');
-                clickRegisterBtn = () => {  // 로그인이 되어있지 않을 때
-                    gauth.signIn().then(function () {
-                        window.location.href = 'http://localhost:8000/register/'
-                    });
-                }
-            }).then(removeContainerNone)
-        });
-
-    }*/
-
     window.onload = function(){
         const container = document.querySelector('.container');
         container.classList.remove("display_none");
@@ -109,6 +60,19 @@
     <div class="row">
         <button type="button" id="loginBtn" class="orange"
             onclick="clickRegisterBtn()"><strong>지원하기/지원확인</strong></button>
+            
+            <br><br>
+                
+            <!--추가 -->
+            <form action="{% url 'check' %}" method="post">
+                {% csrf_token %}
+                <input id="googleID" type="hidden" name="googleID" value="">
+
+                <strong><input type="submit" id="passBtn" class="orange" value="합불확인"
+                onclick="clickPassBtn()"></strong>
+
+            </form>    
+            <!--추가 -->
     </div>
     <div class="row inform-box">
         <div class="supply-inform">

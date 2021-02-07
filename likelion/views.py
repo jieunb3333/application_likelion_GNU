@@ -37,6 +37,11 @@ def view(request):
 
 
 def register(request):
+
+#     google_id = request.session["google_id"]
+#     inform = User.objects.filter(user_id=google_id)
+#     return render(request, "register.html",{"inform": inform})
+
     #구글에 방금 받은 토큰에 대해서 물어보기
     #curl 이용
     
@@ -51,8 +56,57 @@ def register(request):
         return redirect('intro')
 
 
+
 def register_action(request):
     checkbox_value=request.POST["checkbox_value"]
+
+#     google_id = request.POST["googleID"]
+#     inform = User() 
+#     inform.user_id = google_id
+#     inform.user_name = request.POST["name"]
+#     inform.user_pn = request.POST["phonenumber"]
+#     inform.user_grade = request.POST["grade"]
+#     inform.user_major = request.POST["major"]
+#     inform.user_q1 = request.POST["q1"]
+#     inform.user_q2 = request.POST["q2"]
+#     inform.user_q3 = request.POST["q3"]
+#     inform.user_q4 = request.POST["q4"]
+#     inform.save()
+#     request.session["google_id"] = google_id
+#     return redirect("/register_check")
+    # if checkbox_value =='no_checked':
+    #     if User.objects.filter(user_id=google_id).exists()==True:
+    #         inform = User.objects.get(user_id=google_id)
+    #     else: inform = User()
+    #     inform.user_id = google_id
+    #     inform.user_name = request.POST["name"]
+    #     inform.user_pn = request.POST["phonenumber"]
+    #     inform.user_grade = request.POST["grade"]
+    #     inform.user_major = request.POST["major"]
+    #     inform.user_q1 = request.POST["q1"]
+    #     inform.user_q2 = request.POST["q2"]
+    #     inform.user_q3 = request.POST["q3"]
+    #     inform.user_q4 = request.POST["q4"]
+    #     inform.save()
+    #     request.session["google_id"] = google_id
+    #     return render(request, "register.html",{"inform": inform})
+    # else:
+    #     if User.objects.filter(user_id=google_id).exists()==True:
+    #         inform = User.objects.filter(user_id=google_id)
+    #     else: inform = User() 
+    #     inform.user_id = google_id
+    #     inform.user_name = request.POST["name"]
+    #     inform.user_pn = request.POST["phonenumber"]
+    #     inform.user_grade = request.POST["grade"]
+    #     inform.user_major = request.POST["major"]
+    #     inform.user_q1 = request.POST["q1"]
+    #     inform.user_q2 = request.POST["q2"]
+    #     inform.user_q3 = request.POST["q3"]
+    #     inform.user_q4 = request.POST["q4"]
+    #     inform.save()
+    #     request.session["google_id"] = google_id
+    #     return redirect("/register_check")
+
 
     if checkbox_value =='no_checked':
         return redirect("/register/#check")
@@ -70,6 +124,7 @@ def register_action(request):
         inform.save()
         request.user.inform = inform
         return redirect("/register_check")
+
     
 
 
@@ -87,5 +142,23 @@ def register_check(request):
     
 
 
+
 def check(request):
-    return render(request, "check.html")
+    try:
+        google_id = request.POST["googleID"]
+
+        inform=User.objects.filter(user_id=google_id)
+        return render(request,'check.html',{'inform':inform})
+
+
+
+# 예외처리 : googleID못 불러오거나 로그인 안되어 있을 때 intro로 이동    
+    except KeyError:
+        return redirect("/")
+    except ValueError:
+        return redirect("/")
+    
+    
+
+
+

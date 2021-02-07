@@ -26,7 +26,4 @@ urlpatterns = [
     path('view/', views.view, name='view'),
     path('check/', views.check, name='check'),
     path('register_check/', views.register_check, name='register_check'),
-
-
-
 ]
