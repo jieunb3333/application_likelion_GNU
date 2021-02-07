@@ -4,17 +4,108 @@
 
 
 
-{% block title %} 
+{% block title %}
+지원 페이지
 {% endblock title %}
 
 
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+
+
+<script>
+    window.onload = function(){
+        const container = document.querySelector('.container');
+        container.classList.remove("display_none");
+
+    
+        gapi.load('auth2', function () {
+            window.gauth = gapi.auth2.init({
+                client_id: '665318542022-enp0lvnq9a3gs4cik8jac03bbcc1vv8l.apps.googleusercontent.com'
+            })  
+        });  
+    };
+
+    function clickRegisterBtn(){
+        gauth.signIn().then(function (param1) {
+            console.log(param1);
+
+            window.location.href = 'http://localhost:8000/login_action/?token=' + param1.uc.id_token;
+        });
+    }
+
+
+</script>
+<link rel="stylesheet" href="{% static 'css/intro.css' %}">
 {% endblock link %}
 
 
 
 {% block content %}
-    <p>안녕</p>
+<div class="container display_none">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <img class="likelion-logo" src="{% static 'intro_image/logo.png' %}" alt="?" width="15%">
+    </div>
+    <div class="row title">경상대 멋쟁이사자처럼 9기</div>
+    <div class="row title2"><strong>경상대 멋사 9기</strong></div>
+    <hr>
+    <div class="row sub">웹프로그래밍, 웹서비스 구현 및 창업<br>아이디어를 내 손으로 실현한다</div>
+    <div class="row">
+        <button type="button" id="loginBtn" class="orange"
+            onclick="clickRegisterBtn()"><strong>지원하기/지원확인</strong></button>
+            
+            <br><br>
+                
+            <!--추가 -->
+            <form action="{% url 'check' %}" method="post">
+                {% csrf_token %}
+                <input id="googleID" type="hidden" name="googleID" value="">
+
+                <strong><input type="submit" id="passBtn" class="orange" value="합불확인"
+                onclick="clickPassBtn()"></strong>
+
+            </form>    
+            <!--추가 -->
+    </div>
+    <div class="row inform-box">
+        <div class="supply-inform">
+            <div class="col col-left">
+                지원 날짜<br>
+                서류 결과 확인<br>
+                최종확인
+            </div>
+            <div class="col col-middle">
+                :<br>:<br>:
+            </div>
+            <div class="col col-right">
+                2월22일~3월12일<br>3월 14일~<br>개별 통보
+            </div>
+        </div>
+    </div>
+    <div class="row contact">
+        <div class="row" style="color: white;">CONTACT</div>
+        <div class="row sns-logo">
+            <a href="https://www.instagram.com/likelion_gnu/">
+                <img class="insta" src="{% static 'intro_image/insta.png' %}" alt="" width="52px">
+            </a>
+            <a href="https://ko-kr.facebook.com/likeliongnu/">
+                <img class="facebook" src="{% static 'intro_image/facebook.png' %}" alt="" width="52px">
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function() {
+        if($('.msg').length > 0) {
+            $('.msg').remove();
+        }
+    }, 2500)
+</script>
 {% endblock content %}
